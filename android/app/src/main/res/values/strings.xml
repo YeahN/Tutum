@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">Tutum</string>
+    <string name="app_name">TutumAndroid</string>
+
+    <string name="fragment_list">배송목록</string>
+    <string name="fragment_mastercode">결제</string>
+    <string name="fragment_pay">마스터코드</string>
+    <string name="fragment_setting">설정</string>
 </resources>

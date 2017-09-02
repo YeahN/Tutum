@@ -32,7 +32,7 @@
         android:background="#00ff0000" />
 
     <ListView
-        android:id="@+id/tracking_list"
+        android:id="@+id/fragment_list_listview"
         android:layout_below="@id/list_title"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

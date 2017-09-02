@@ -9,28 +9,28 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.ryn41.tutum.R;
-import com.example.ryn41.tutum.forlists.SettingAdapter;
-import com.example.ryn41.tutum.forlists.SettingItem;
+import com.example.ryn41.tutum.forlists.MainAdapter;
+import com.example.ryn41.tutum.forlists.MainItem;
 
 import java.util.ArrayList;
 
 /**
- * Created by ryn41 on 2017-08-20.
+ * Created by ryn41 on 2017-09-02.
  */
 
-public class SettingFragment extends Fragment {
+public class TutumListFragment extends Fragment {
     private View wholeView= null;
-    private SettingAdapter mAdapter= null;
-    private ArrayList<SettingItem> mContent= null;
+    private MainAdapter mAdapter= null;
+    private ArrayList<MainItem> mContent= null;
     private ListView mList= null;
 
-    public static SettingFragment newInstance(){
-        return new SettingFragment();
+    public static TutumListFragment newInstance(){
+        return new TutumListFragment();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle bundle){
-        wholeView= inflater.inflate(R.layout.fragment_setting, null);
+        wholeView= inflater.inflate(R.layout.fragment_list, null);
         return wholeView;
     }
 
@@ -46,7 +46,7 @@ public class SettingFragment extends Fragment {
     }
 
     private void makeView(){
-        mList= (ListView)wholeView.findViewById(R.id.fragment_setting_listview);
+        mList= (ListView)wholeView.findViewById(R.id.fragment_list_listview);
         mList.setAdapter(mAdapter);
         mList.setOnItemClickListener(itemClick);
     }
@@ -64,4 +64,3 @@ public class SettingFragment extends Fragment {
         }
     };
 }
-

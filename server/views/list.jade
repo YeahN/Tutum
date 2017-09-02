@@ -1,0 +1,17 @@
+html(lang='ko')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(http-equiv='X-UA-Compatible', content='ie=edge')
+    title TUTUM
+  body
+    h1= 'Hello, ' + user.name + '!'
+    p
+      a(href='/list/add') 추가
+    p
+      h3 배송 목록
+      ul
+        each invoice in invoices
+          li= invoice.name + ' - ' + invoice.invoiceNo
+    p
+      a(href='/logout') 로그아웃

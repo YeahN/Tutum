@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/activity_login_relative01"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp">
+
+        <Button
+            android:id="@+id/activity_login_login_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="로그인"
+            android:textColor="#ffffff"
+            android:background="#F0525D"
+            android:layout_alignParentRight="true"
+            android:paddingTop="30dp"
+            android:paddingBottom="30dp"
+            android:layout_centerVertical="true"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:orientation="vertical"
+            android:layout_toLeftOf="@+id/activity_login_login_button"
+            android:layout_marginRight="10dp">
+
+            <EditText
+                android:id="@+id/activity_login_id_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="TUTUM ID" />
+
+            <EditText
+                android:id="@+id/activity_login_password_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="PASSWORD"
+                android:inputType="textPassword" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/activity_login_relative01"
+        android:layout_marginBottom="20dp"/>
+
+    <Button
+        android:id="@+id/activity_login_signup_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:text="회원가입"
+        android:background="#c3c3c3"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/activity_login_relative01"
+        android:layout_marginTop="10dp"
+        android:layout_alignRight="@+id/activity_login_relative01"
+        android:layout_alignLeft="@+id/activity_login_relative01"/>
+
+</RelativeLayout>

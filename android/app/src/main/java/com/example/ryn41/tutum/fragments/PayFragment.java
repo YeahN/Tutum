@@ -9,19 +9,19 @@ import android.view.ViewGroup;
 import com.example.ryn41.tutum.R;
 
 /**
- * Created by ryn41 on 2017-08-20.
+ * Created by ryn41 on 2017-09-02.
  */
 
-public class MastercodeFragment extends Fragment {
+public class PayFragment extends Fragment {
     private View wholeView= null;
 
-    public static MastercodeFragment newInstance(){
-        return new MastercodeFragment();
+    public static PayFragment newInstance(){
+        return new PayFragment();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle bundle){
-        wholeView= inflater.inflate(R.layout.fragment_mastercode, null);
+        wholeView= inflater.inflate(R.layout.fragment_pay, null);
         return wholeView;
     }
 
