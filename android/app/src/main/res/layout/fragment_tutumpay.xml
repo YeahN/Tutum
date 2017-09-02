@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:background="@drawable/tutumpay_rec"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="150dp"
+        android:id="@+id/view" />
+
+    <ImageView
+        android:id="@+id/tutum_logo"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:background="#000000"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="160dp"/>
+
+    <TextView
+        android:id="@+id/tutumpay_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/tutum_logo"
+        android:layout_marginTop="20dp"
+        android:text="김이화님\n7500원"
+        android:textSize="20dp"
+        android:textColor="@color/tutum_text_color"/>
+
+    <Button
+        android:id="@+id/tutumpay_charge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="충전하기"
+        android:background="@color/tutum_yellow"
+        android:layout_below="@+id/view"
+        android:layout_toStartOf="@+id/tutumpay_info"
+        android:layout_marginEnd="17dp"
+        android:layout_marginTop="56dp" />
+
+    <Button
+        android:id="@+id/tutumpay_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="내역보기"
+        android:background="@color/tutum_yellow"
+        android:layout_toRightOf="@id/tutumpay_charge"
+        android:layout_alignTop="@+id/tutumpay_charge"
+        android:layout_alignBottom="@+id/tutumpay_charge"
+        android:layout_marginLeft="50dp"/>
+
+</RelativeLayout>

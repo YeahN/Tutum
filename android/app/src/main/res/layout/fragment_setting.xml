@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:background="@color/background_gray">
+
+    <TextView
+        android:id="@+id/setting_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/tutum_pink"
+        android:text="설정"
+        android:textColor="@color/tutum_text_color"
+        android:textSize="25dp"
+        android:gravity="center_horizontal"/>
+
+    <Button
+        android:id="@+id/setting_back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:background="#00ff0000"
+        android:text="뒤로"
+        android:textColor="@color/tutum_text_color"
+        android:textSize="25dp"/>
+
+    <TextView
+        android:id="@+id/setting_login_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/setting_view"
+        android:text="김이화님"
+        android:textColor="@color/tutum_text_color"
+        android:textSize="25dp"/>
+
+    <Button
+        android:id="@+id/setting_logout_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/setting_view"
+        android:gravity="right"
+        android:background="#00ff0000"
+        android:text="로그아웃"
+        android:textSize="25dp"
+        android:textColor="@color/tutum_text_color" />
+
+    <TextView
+        android:id="@+id/setting_push_alarm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/setting_login_info"
+        android:text="푸시 알림"
+        android:textColor="@color/tutum_text_color"
+        android:textSize="25dp"
+        />
+
+    <Switch
+        android:id="@+id/setting_push_alarm_switch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/setting_login_info"
+        android:layout_marginRight="5dp"/>
+
+</RelativeLayout>
