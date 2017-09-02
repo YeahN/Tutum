@@ -10,11 +10,11 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.ryn41.tutum.R;
 import com.example.ryn41.tutum.etc.TempData;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -27,6 +27,8 @@ import java.net.URL;
  */
 
 public class LoginActivity extends Activity {
+    private String idstr = "";
+    private String pwstr = "";
 
     private JSONObject postData= null;
 
@@ -61,17 +63,17 @@ public class LoginActivity extends Activity {
             int id= v.getId();
 
             if(id == R.id.activity_login_login_button) {
-                String idval= ((EditText)findViewById(R.id.activity_login_id_edittext)).getText().toString();
-                String pwval= ((EditText)findViewById(R.id.activity_login_password_edittext)).getText().toString();
+                idstr= ((EditText)findViewById(R.id.activity_login_id_edittext)).getText().toString();
+                pwstr= ((EditText)findViewById(R.id.activity_login_password_edittext)).getText().toString();
 
-                if(!idval.isEmpty() && !pwval.isEmpty()) {
-                    TempData.setID(idval);
-                    TempData.setPW(pwval);
+                if(!idstr.isEmpty() && !pwstr.isEmpty()) {
+                    TempData.setID(idstr);
+                    TempData.setPW(pwstr);
 
                     request();
                 }
                 else {
-                    // make toast
+                    Toast.makeText(getApplicationContext(), "입력하세요", Toast.LENGTH_SHORT).show();
                 }
             }
             else if(id == R.id.activity_login_signup_button)
@@ -81,30 +83,32 @@ public class LoginActivity extends Activity {
 
     private void request(){
         Log.e("tutum", "username : " + TempData.getID() + ", password : " + TempData.getPW());
-        try{
-            postData= new JSONObject();
-            postData.accumulate("username", TempData.getID());
-            postData.accumulate("password", TempData.getPW());
-            (new LoginAsync()).execute();
-        } catch(JSONException e){
-            e.printStackTrace();
-        }
+        (new LoginAsync()).execute();
+//        try{
+////            postData= new JSONObject();
+////            postData.accumulate("username", TempData.getID());
+////            postData.accumulate("password", TempData.getPW());
+//            (new LoginAsync()).execute();
+//        } catch(JSONException e){
+//            e.printStackTrace();
+//        }
     }
 
-    private void loginSuccess(){
-        // data save (id, pw ...)
-        // if saving data, is Saved = true;
-
-        startActivity(new Intent(getApplicationContext(), MainActivity.class));
-        finish();
-    }
+//    private void loginSuccess(){
+//        // data save (id, pw ...)
+//        // if saving data, is Saved = true;
+//
+//        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+//        finish();
+//    }
 
     private class LoginAsync extends AsyncTask<Void, Void, Void>{
         @Override
         protected Void doInBackground(Void... params){
             try {
-                URL url= new URL("https://m.naver.com");
-                HttpURLConnection conn= (HttpURLConnection)url.openConnection();
+                String str = "http://13.59.135.92/login.php?id=" + idstr + "&pw=" + pwstr;
+                URL url = new URL(str);
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("POST");
                 conn.setDoInput(true);
 //                conn.setDoOutput(true);
@@ -120,16 +124,31 @@ public class LoginActivity extends Activity {
                     sb.append(line);
                 }
                 line= sb.toString();
-//                Log.e("onface player", "onface_player login info : " + line);
-//                JSONObject obj= new JSONObject(line);
-//                if(obj.getString("token") != null && obj.getString("token").length() > 10){
+//                if(bj.getString("token"o) != null && obj.getString("token").length() > 10){
 //
 //                    reqLogin(obj.getString("token"));
 //                } else {
 //                    Toast.makeText(getApplicationContext(), "There\'s no matched user!", Toast.LENGTH_SHORT).show();
 //                }
+                if(line.equals("success")){
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getApplicationContext(), "환영합니다", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    Intent i= new Intent(getApplicationContext(), MainActivity.class);
+                    i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(i);
+                } else {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getApplicationContext(), "ID/PW를 확인해주세요", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
                 Log.e("tutum", line);
-                loginSuccess();
             } catch (Exception ex){
                 ex.printStackTrace();
             }

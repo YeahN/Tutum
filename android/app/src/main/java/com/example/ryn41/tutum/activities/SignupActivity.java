@@ -1,6 +1,7 @@
 package com.example.ryn41.tutum.activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,6 +21,7 @@ import java.net.URL;
 public class SignupActivity extends Activity {
     private String idstr = "";
     private String pwstr = "";
+    private String namestr = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +52,7 @@ public class SignupActivity extends Activity {
             if (id == R.id.activity_signup_signup_button) {
                 idstr = ((EditText) findViewById(R.id.activity_signup_id_edittext)).getText().toString();
                 pwstr = ((EditText) findViewById(R.id.activity_signup_password_edittext)).getText().toString();
+                namestr = ((EditText) findViewById(R.id.activity_signup_name_edittext)).getText().toString();
 
                 if (!idstr.isEmpty() && !pwstr.isEmpty()) {
                     request();
@@ -68,7 +71,7 @@ public class SignupActivity extends Activity {
         @Override
         protected Void doInBackground(Void... params) {
             try {
-                String str = "http://13.59.135.92/register.php?id=" + idstr + "&pw=" + pwstr;
+                String str = "http://13.59.135.92/register.php?id=" + idstr + "&pw=" + pwstr + "&name=" + namestr;
                 URL url = new URL(str);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("POST");
@@ -91,8 +94,16 @@ public class SignupActivity extends Activity {
                 line = sb.toString();
 
                 Log.e("tutum", line);
-                Toast.makeText(getApplicationContext(), "가입이 완료되었습니다.", Toast.LENGTH_SHORT).show();
-                finish();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getApplicationContext(), "가입이 완료되었습니다", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                Intent iobj = new Intent(SignupActivity.this, LoginActivity.class);
+                iobj.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(iobj);
+
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
