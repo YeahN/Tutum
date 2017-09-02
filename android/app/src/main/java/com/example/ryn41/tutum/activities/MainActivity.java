@@ -43,4 +43,3 @@ public class MainActivity extends FragmentActivity {
         mTabs.setupWithViewPager(mPager);
     }
 }
-

@@ -99,7 +99,7 @@ public class LoginActivity extends Activity {
         finish();
     }
 
-    private class LoginAsync extends AsyncTask<Void, Void, Void> {
+    private class LoginAsync extends AsyncTask<Void, Void, Void>{
         @Override
         protected Void doInBackground(Void... params){
             try {
