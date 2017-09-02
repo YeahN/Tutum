@@ -1,13 +1,10 @@
 package com.example.ryn41.tutum.activities;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -19,10 +16,6 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
-/**
- * Created by ryn41 on 2017-09-02.
- */
 
 public class SignupActivity extends Activity {
     private String idstr = "";
