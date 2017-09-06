@@ -3,8 +3,15 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="120dp"/>
+
     <LinearLayout
-        android:id="@+id/activity_signup_linear01"
+        android:id="@+id/activity_signup_linear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
@@ -16,40 +23,33 @@
             android:id="@+id/activity_signup_id_edittext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="TUTUM ID" />
+            android:hint="TUTUM ID"
+            android:singleLine="true" />
         <EditText
             android:id="@+id/activity_signup_password_edittext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="PASSWORD"
-            android:inputType="textPassword" />
-
+            android:inputType="textPassword"
+            android:singleLine="true" />
         <EditText
             android:id="@+id/activity_signup_name_edittext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="NAME" />
+            android:hint="NAME"
+            android:singleLine="true" />
 
     </LinearLayout>
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/logo"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@+id/activity_signup_linear01"
-        android:layout_marginBottom="20dp"/>
-
     <Button
         android:id="@+id/activity_signup_signup_button"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/activity_signup_linear"
         android:text="가입하기"
         android:textColor="#ffffff"
-        android:background="#F0525D"
-        android:layout_below="@+id/activity_signup_linear01"
-        android:layout_alignRight="@+id/activity_signup_linear01"
-        android:layout_alignLeft="@+id/activity_signup_linear01"/>
+        android:background="#F0525D"/>
 
 </RelativeLayout>

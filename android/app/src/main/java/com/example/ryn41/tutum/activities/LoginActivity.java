@@ -6,8 +6,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -35,9 +33,6 @@ public class LoginActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
     }
 
@@ -85,9 +80,9 @@ public class LoginActivity extends Activity {
         Log.e("tutum", "username : " + TempData.getID() + ", password : " + TempData.getPW());
         (new LoginAsync()).execute();
 //        try{
-////            postData= new JSONObject();
-////            postData.accumulate("username", TempData.getID());
-////            postData.accumulate("password", TempData.getPW());
+//            postData= new JSONObject();
+//            postData.accumulate("username", TempData.getID());
+//            postData.accumulate("password", TempData.getPW());
 //            (new LoginAsync()).execute();
 //        } catch(JSONException e){
 //            e.printStackTrace();
@@ -105,7 +100,8 @@ public class LoginActivity extends Activity {
     private class LoginAsync extends AsyncTask<Void, Void, Void>{
         @Override
         protected Void doInBackground(Void... params){
-            try {
+            try
+            {
                 String str = "http://13.59.135.92/login.php?id=" + idstr + "&pw=" + pwstr;
                 URL url = new URL(str);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -148,8 +144,10 @@ public class LoginActivity extends Activity {
                         }
                     });
                 }
-                Log.e("tutum", line);
-            } catch (Exception ex){
+                Log.e("login", line);
+            }
+            catch (Exception ex)
+            {
                 ex.printStackTrace();
             }
             return null;

@@ -8,10 +8,9 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
-import com.example.ryn41.tutum.etc.Constants;
 
 import com.example.ryn41.tutum.R;
+import com.example.ryn41.tutum.etc.Constants;
 
 
 /**
@@ -36,7 +35,7 @@ public class TutumPagerAdapter extends FragmentPagerAdapter {
                 case Constants.FRAGMENT_LIST:
                     return mContext.getResources().getString(R.string.fragment_list);
                 case Constants.FRAGMENT_MASTER:
-                    return mContext.getResources().getString(R.string.fragment_mastercode);
+                    return "TUTUMPAY";
                 case Constants.FRAGMENT_PAY:
                     return mContext.getResources().getString(R.string.fragment_pay);
                 case Constants.FRAGMENT_SETTING:
@@ -50,7 +49,7 @@ public class TutumPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position){
         switch(position){
             case Constants.FRAGMENT_LIST:
-                return TutumListFragment.newInstance();
+                return ParcelListFragment.newInstance();
             case Constants.FRAGMENT_MASTER:
                 return MastercodeFragment.newInstance();
             case Constants.FRAGMENT_PAY:

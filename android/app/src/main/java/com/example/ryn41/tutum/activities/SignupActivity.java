@@ -55,7 +55,7 @@ public class SignupActivity extends Activity {
                 namestr = ((EditText) findViewById(R.id.activity_signup_name_edittext)).getText().toString();
 
                 if (!idstr.isEmpty() && !pwstr.isEmpty()) {
-                    request();
+                    (new SignupAsync()).execute();
                 } else {
                     Toast.makeText(getApplicationContext(), "입력하세요", Toast.LENGTH_SHORT).show();
                 }
@@ -63,14 +63,11 @@ public class SignupActivity extends Activity {
         }
     };
 
-    private void request() {
-        (new SignupAsync()).execute();
-    }
-
     private class SignupAsync extends AsyncTask<Void, Void, Void> {
         @Override
         protected Void doInBackground(Void... params) {
-            try {
+            try
+            {
                 String str = "http://13.59.135.92/register.php?id=" + idstr + "&pw=" + pwstr + "&name=" + namestr;
                 URL url = new URL(str);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -93,7 +90,7 @@ public class SignupActivity extends Activity {
                 }
                 line = sb.toString();
 
-                Log.e("tutum", line);
+                Log.e("sign up", line);
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -103,8 +100,9 @@ public class SignupActivity extends Activity {
                 Intent iobj = new Intent(SignupActivity.this, LoginActivity.class);
                 iobj.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(iobj);
-
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 ex.printStackTrace();
             }
             return null;
