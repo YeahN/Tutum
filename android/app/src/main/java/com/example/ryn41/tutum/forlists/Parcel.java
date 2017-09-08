@@ -7,11 +7,13 @@ package com.example.ryn41.tutum.forlists;
 public class Parcel {
 
 //    String itemName;
+    String companyCode;
     String companyName;
     String invoiceNo;
 
-    public Parcel(String companyName, String invoiceNo) {
+    public Parcel(String companyCode, String companyName, String invoiceNo) {
 //        this.itemName = itemName;
+        this.companyCode = companyCode;
         this.companyName = companyName;
         this.invoiceNo = invoiceNo;
     }
@@ -23,6 +25,14 @@ public class Parcel {
 //    public void setItemName(String itemName) {
 //        this.itemName = itemName;
 //    }
+
+    public String getCompanyCode() {
+        return companyCode;
+    }
+
+    public void setCompanyCode(String companyCode) {
+        this.companyCode = companyCode;
+    }
 
     public String getCompanyName() {
         return companyName;

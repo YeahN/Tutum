@@ -14,11 +14,11 @@ import com.example.ryn41.tutum.R;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class SignupActivity extends Activity {
+
     private String idstr = "";
     private String pwstr = "";
     private String namestr = "";
@@ -64,22 +64,15 @@ public class SignupActivity extends Activity {
     };
 
     private class SignupAsync extends AsyncTask<Void, Void, Void> {
+
         @Override
         protected Void doInBackground(Void... params) {
-            try
-            {
+            try {
                 String str = "http://13.59.135.92/register.php?id=" + idstr + "&pw=" + pwstr + "&name=" + namestr;
                 URL url = new URL(str);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("POST");
-                conn.setRequestProperty("Accept", "application/json");
-                conn.setRequestProperty("Content-Type", "application/json");
                 conn.setDoInput(true);
-                conn.setDoOutput(true);
-
-                OutputStream os = conn.getOutputStream();
-//                os.write(postData.toString().getBytes("utf-8"));
-                os.flush();
                 conn.connect();
 
                 BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -89,20 +82,19 @@ public class SignupActivity extends Activity {
                     sb.append(line);
                 }
                 line = sb.toString();
-
                 Log.e("sign up", line);
+
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(getApplicationContext(), "가입이 완료되었습니다", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "회원가입이 완료되었습니다", Toast.LENGTH_SHORT).show();
                     }
                 });
-                Intent iobj = new Intent(SignupActivity.this, LoginActivity.class);
-                iobj.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(iobj);
+                Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex) {
                 ex.printStackTrace();
             }
             return null;

@@ -13,8 +13,6 @@ import android.widget.Toast;
 import com.example.ryn41.tutum.R;
 import com.example.ryn41.tutum.etc.TempData;
 
-import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -25,19 +23,18 @@ import java.net.URL;
  */
 
 public class LoginActivity extends Activity {
+
     private String idstr = "";
     private String pwstr = "";
 
-    private JSONObject postData= null;
-
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
     }
 
     @Override
-    public void onResume(){
+    public void onResume() {
         super.onResume();
         makeView();
     }
@@ -47,19 +44,19 @@ public class LoginActivity extends Activity {
         super.onPause();
     }
 
-    private void makeView(){
+    private void makeView() {
         ((Button)findViewById(R.id.activity_login_login_button)).setOnClickListener(click);
         ((Button)findViewById(R.id.activity_login_signup_button)).setOnClickListener(click);
     }
 
-    View.OnClickListener click= new View.OnClickListener(){
+    View.OnClickListener click = new View.OnClickListener(){
         @Override
         public void onClick(View v){
-            int id= v.getId();
+            int id = v.getId();
 
             if(id == R.id.activity_login_login_button) {
-                idstr= ((EditText)findViewById(R.id.activity_login_id_edittext)).getText().toString();
-                pwstr= ((EditText)findViewById(R.id.activity_login_password_edittext)).getText().toString();
+                idstr = ((EditText)findViewById(R.id.activity_login_id_edittext)).getText().toString();
+                pwstr = ((EditText)findViewById(R.id.activity_login_password_edittext)).getText().toString();
 
                 if(!idstr.isEmpty() && !pwstr.isEmpty()) {
                     TempData.setID(idstr);
@@ -68,7 +65,7 @@ public class LoginActivity extends Activity {
                     request();
                 }
                 else {
-                    Toast.makeText(getApplicationContext(), "입력하세요", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "아이디와 비밀번호를 입력해주세요", Toast.LENGTH_SHORT).show();
                 }
             }
             else if(id == R.id.activity_login_signup_button)
@@ -76,78 +73,46 @@ public class LoginActivity extends Activity {
         }
     };
 
-    private void request(){
-        Log.e("tutum", "username : " + TempData.getID() + ", password : " + TempData.getPW());
+    private void request() {
+        Log.e("TempData", "ID: " + TempData.getID() + ", PW: " + TempData.getPW());
         (new LoginAsync()).execute();
-//        try{
-//            postData= new JSONObject();
-//            postData.accumulate("username", TempData.getID());
-//            postData.accumulate("password", TempData.getPW());
-//            (new LoginAsync()).execute();
-//        } catch(JSONException e){
-//            e.printStackTrace();
-//        }
     }
 
-//    private void loginSuccess(){
-//        // data save (id, pw ...)
-//        // if saving data, is Saved = true;
-//
-//        startActivity(new Intent(getApplicationContext(), MainActivity.class));
-//        finish();
-//    }
+    private class LoginAsync extends AsyncTask<Void, Void, Void> {
 
-    private class LoginAsync extends AsyncTask<Void, Void, Void>{
         @Override
-        protected Void doInBackground(Void... params){
-            try
-            {
+        protected Void doInBackground(Void... params) {
+            try {
                 String str = "http://13.59.135.92/login.php?id=" + idstr + "&pw=" + pwstr;
                 URL url = new URL(str);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("POST");
                 conn.setDoInput(true);
-//                conn.setDoOutput(true);
-//                OutputStream os= conn.getOutputStream();
-//                os.write(postData.toString().getBytes("utf-8"));
-//                os.flush();
                 conn.connect();
 
                 BufferedReader rd  = new BufferedReader(new InputStreamReader(conn.getInputStream()));
                 StringBuilder sb = new StringBuilder();
                 String line;
-                while((line= rd.readLine()) != null){
+                while((line = rd.readLine()) != null){
                     sb.append(line);
                 }
-                line= sb.toString();
-//                if(bj.getString("token"o) != null && obj.getString("token").length() > 10){
-//
-//                    reqLogin(obj.getString("token"));
-//                } else {
-//                    Toast.makeText(getApplicationContext(), "There\'s no matched user!", Toast.LENGTH_SHORT).show();
-//                }
-                if(line.equals("success")){
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast.makeText(getApplicationContext(), "환영합니다", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                    Intent i= new Intent(getApplicationContext(), MainActivity.class);
-                    i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(i);
+                line = sb.toString();
+                Log.e("login", line);
+
+                if(line.equals("success")) {
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                    finish();
                 } else {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(getApplicationContext(), "ID/PW를 확인해주세요", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "아이디 또는 비밀번호를 다시 확인하세요", Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
-                Log.e("login", line);
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex) {
                 ex.printStackTrace();
             }
             return null;

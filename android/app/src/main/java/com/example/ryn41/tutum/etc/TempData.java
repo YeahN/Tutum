@@ -5,12 +5,12 @@ package com.example.ryn41.tutum.etc;
  */
 
 public class TempData {
-    private static String mUserID= "";
-    private static String mUserPW= "";
+    private static String mUserID = "";
+    private static String mUserPW = "";
 
-    public static void setID(String v){ mUserID= v; }
-    public static void setPW(String v){ mUserPW= v; }
+    public static void setID(String v) { mUserID = v; }
+    public static void setPW(String v) { mUserPW = v; }
 
-    public static String getID(){ return mUserID; }
-    public static String getPW(){ return mUserPW; }
+    public static String getID() { return mUserID; }
+    public static String getPW() { return mUserPW; }
 }
