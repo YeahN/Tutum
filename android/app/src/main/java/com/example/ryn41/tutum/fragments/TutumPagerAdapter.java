@@ -34,10 +34,10 @@ public class TutumPagerAdapter extends FragmentPagerAdapter {
             switch(position){
                 case Constants.FRAGMENT_LIST:
                     return mContext.getResources().getString(R.string.fragment_list);
-                case Constants.FRAGMENT_MASTER:
-                    return "TUTUMPAY";
                 case Constants.FRAGMENT_PAY:
                     return mContext.getResources().getString(R.string.fragment_pay);
+                case Constants.FRAGMENT_MASTER:
+                    return mContext.getResources().getString(R.string.fragment_mastercode);
                 case Constants.FRAGMENT_SETTING:
                     return mContext.getResources().getString(R.string.fragment_setting);
             }
