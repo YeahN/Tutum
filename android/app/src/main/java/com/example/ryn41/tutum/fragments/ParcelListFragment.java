@@ -164,32 +164,4 @@ public class ParcelListFragment extends Fragment {
             return null;
         }
     }
-
-    private class ListAsync extends AsyncTask<Void, Void, Void> {
-
-        @Override
-        protected Void doInBackground(Void... params) {
-            try {
-                String companyCode, companyName, invoiceNo;
-                JSONObject jsonObject = new JSONObject(parcels);
-                JSONArray jsonArray = jsonObject.getJSONArray("response");
-                int count = 0;
-                while (count < jsonArray.length()) {
-                    JSONObject object = jsonArray.getJSONObject(count);
-                    companyCode = object.getString("companyCode");
-                    companyName = object.getString("companyName");
-                    invoiceNo = object.getString("invoiceNo");
-                    Parcel parcel = new Parcel(companyCode, companyName, invoiceNo);
-                    parcelList.add(parcel);
-                    count++;
-                }
-
-
-                adapter.notifyDataSetChanged();
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
-            return null;
-        }
-    }
 }
