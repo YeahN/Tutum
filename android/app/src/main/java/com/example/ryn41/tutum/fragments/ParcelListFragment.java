@@ -62,17 +62,60 @@ public class ParcelListFragment extends Fragment {
     }
 
     private void makeView() {
+        generateViewIfNotExisting();
         parcelListView = (ListView) wholeView.findViewById(R.id.fragment_list_listview);
         parcelList = new ArrayList<Parcel>();
-//        parcelList.add(new Parcel("07", "KG로지스택배", "305121905911"));
-//        parcelList.add(new Parcel("04", "CJ대한통운", "339004744383"));
-//        parcelList.add(new Parcel("05", "한진택배", "504247806311"));
+        try {
+            String str= ((MainActivity)getActivity()).getParcels();
+            String companyCode, companyName, invoiceNo;
+            JSONObject jsonObject = new JSONObject(str);
+            JSONArray jsonArray = jsonObject.getJSONArray("response");
+            if(jsonArray != null){
+                int count = 0;
+                while (count < jsonArray.length()) {
+                    JSONObject object = jsonArray.getJSONObject(count);
+                    companyCode = object.getString("companyCode");
+                    companyName = object.getString("companyName");
+                    invoiceNo = object.getString("invoiceNo");
+                    Parcel parcel = new Parcel(companyCode, companyName, invoiceNo);
+                    parcelList.add(parcel);
+                    count++;
+                }
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
         adapter = new ParcelListAdapter(getContext(), parcelList);
         parcelListView.setAdapter(adapter);
         parcelListView.setOnItemClickListener(itemClick);
+    }
 
-        parcels = ((MainActivity)getActivity()).getParcels();
-        (new ListAsync()).execute();
+    private void generateViewIfNotExisting(){
+        if(wholeView == null)
+            wholeView= LayoutInflater.from(getActivity()).inflate(R.layout.fragment_list, null);
+    }
+
+    public void setParcelData(String jsonString){
+        try {
+            String companyCode, companyName, invoiceNo;
+            JSONObject jsonObject = new JSONObject(jsonString);
+            JSONArray jsonArray = jsonObject.getJSONArray("response");
+            int count = 0;
+            while (count < jsonArray.length()) {
+                JSONObject object = jsonArray.getJSONObject(count);
+                companyCode = object.getString("companyCode");
+                companyName = object.getString("companyName");
+                invoiceNo = object.getString("invoiceNo");
+                Parcel parcel = new Parcel(companyCode, companyName, invoiceNo);
+                parcelList.add(parcel);
+                count++;
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        adapter.notifyDataSetChanged();
     }
 
     View.OnClickListener click= new View.OnClickListener(){
@@ -95,6 +138,7 @@ public class ParcelListFragment extends Fragment {
         @Override
         protected Void doInBackground(Void... params) {
             try {
+                Log.e("parcel", "company code : " + companyCode + ", invoice no : " + invoiceNo);
                 String str = "http://info.sweettracker.co.kr/api/v1/trackingInfo?t_key=qLBsAYIWlzUJ0ojCZR6DDA&t_code=" + companyCode + "&t_invoice=" + invoiceNo;
                 URL url = new URL(str);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -139,6 +183,9 @@ public class ParcelListFragment extends Fragment {
                     parcelList.add(parcel);
                     count++;
                 }
+
+
+                adapter.notifyDataSetChanged();
             } catch (Exception ex) {
                 ex.printStackTrace();
             }

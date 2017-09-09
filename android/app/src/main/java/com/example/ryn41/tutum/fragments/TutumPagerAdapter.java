@@ -56,8 +56,9 @@ public class TutumPagerAdapter extends FragmentPagerAdapter {
                 return PayFragment.newInstance();
             case Constants.FRAGMENT_SETTING:
                 return SettingFragment.newInstance();
+            default:
+                return null;
         }
-        return null;
     }
     @Override
     public int getCount(){ return 4; }

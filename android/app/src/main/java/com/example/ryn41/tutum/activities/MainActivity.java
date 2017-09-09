@@ -10,6 +10,8 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 
 import com.example.ryn41.tutum.R;
+import com.example.ryn41.tutum.etc.Constants;
+import com.example.ryn41.tutum.fragments.ParcelListFragment;
 import com.example.ryn41.tutum.fragments.TutumPagerAdapter;
 
 import java.io.BufferedReader;
@@ -34,12 +36,14 @@ public class MainActivity extends FragmentActivity {
 
         Intent intent = getIntent();
         userID = intent.getStringExtra("userID");
-        (new ListAsync()).execute();
     }
 
     @Override
     public void onResume(){
         super.onResume();
+
+//        makeView();
+        (new ListAsync()).execute();
     }
     @Override
     public void onPause(){
@@ -55,10 +59,6 @@ public class MainActivity extends FragmentActivity {
         mTabs.setupWithViewPager(mPager);
     }
 
-//    public String getUserID() {
-//        return userID;
-//    }
-
     public String getParcels() {
         return parcels;
     }
@@ -70,7 +70,7 @@ public class MainActivity extends FragmentActivity {
             super.onPreExecute();
 
             if(mDialog == null){
-                mDialog= new ProgressDialog(getApplicationContext());
+                mDialog= new ProgressDialog(MainActivity.this);
                 mDialog.setMessage("get data");
                 mDialog.setIndeterminate(false);
                 mDialog.setCancelable(false);
@@ -98,8 +98,6 @@ public class MainActivity extends FragmentActivity {
                 line = sb.toString();
                 parcels = line;
                 Log.e("parcels", parcels);
-
-                makeView();
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
@@ -110,6 +108,9 @@ public class MainActivity extends FragmentActivity {
         public void onPostExecute(Void result){
             super.onPostExecute(result);
             if(mDialog != null && mDialog.isShowing()) mDialog.dismiss();
+            Log.e("parcel", "list async");
+//            ((ParcelListFragment)mAdapter.getItem(Constants.FRAGMENT_LIST)).makeViewWithData(parcels);
+            makeView();
         }
     }
 }

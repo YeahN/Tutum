@@ -24,6 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="TUTUM ID"
+            android:text="J6I9ALUPOQ"
             android:singleLine="true" />
         <EditText
             android:id="@+id/activity_login_password_edittext"
@@ -31,6 +32,7 @@
             android:layout_height="wrap_content"
             android:hint="PASSWORD"
             android:inputType="textPassword"
+            android:text="1234"
             android:singleLine="true" />
 
     </LinearLayout>

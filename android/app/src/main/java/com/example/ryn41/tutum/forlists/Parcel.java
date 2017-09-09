@@ -1,5 +1,7 @@
 package com.example.ryn41.tutum.forlists;
 
+import android.util.Log;
+
 /**
  * Created by stg32 on 2017-09-06.
  */
@@ -16,6 +18,8 @@ public class Parcel {
         this.companyCode = companyCode;
         this.companyName = companyName;
         this.invoiceNo = invoiceNo;
+
+        Log.e("parcel", "company : " + companyName + ", invoice no : " + invoiceNo);
     }
 
 //    public String getItemName() {
