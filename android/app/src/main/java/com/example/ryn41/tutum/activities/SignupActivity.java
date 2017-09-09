@@ -67,8 +67,14 @@ public class SignupActivity extends Activity {
 
         @Override
         protected Void doInBackground(Void... params) {
+<<<<<<< Updated upstream
             try {
                 String str = "http://13.59.135.92/register.php?id=" + idstr + "&pw=" + pwstr + "&name=" + namestr;
+=======
+            try
+            {
+                String str = "http://13.59.135.92/regist.php?id=" + idstr + "&pw=" + pwstr + "&name=" + namestr;
+>>>>>>> Stashed changes
                 URL url = new URL(str);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("POST");

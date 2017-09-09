@@ -81,9 +81,16 @@ public class LoginActivity extends Activity {
     private class LoginAsync extends AsyncTask<Void, Void, Void> {
 
         @Override
+<<<<<<< Updated upstream
         protected Void doInBackground(Void... params) {
             try {
                 String str = "http://13.59.135.92/login.php?id=" + idstr + "&pw=" + pwstr;
+=======
+        protected Void doInBackground(Void... params){
+            try
+            {
+                String str = "http://13.59.135.92/login_ex.php?id=" + idstr + "&pw=" + pwstr;
+>>>>>>> Stashed changes
                 URL url = new URL(str);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("POST");

@@ -33,6 +33,27 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.TrackingInfoActivity"></activity>
+
+        <activity
+            android:name=".activities.PayActivity"
+            android:label="@string/app_name">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <!-- 웹뷰 및 ISP 등의 어플 인증후 앱으로 다시 호출하기 위한 스키마 설정 -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="iamporttest" />
+            </intent-filter>
+
+        </activity>
     </application>
 
 </manifest>
