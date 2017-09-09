@@ -101,6 +101,7 @@ public class LoginActivity extends Activity {
 
                 if(line.equals("success")) {
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    intent.putExtra("userID", idstr);
                     startActivity(intent);
                     finish();
                 } else {
