@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="company_code_array">
+        <item>04</item>
+        <item>05</item>
+        <item>08</item>
+        <item>01</item>
+        <item>06</item>
+        <item>07</item>
+        <item>09</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>20</item>
+        <item>21</item>
+        <item>14</item>
+        <item>26</item>
+        <item>22</item>
+        <item>23</item>
+        <item>32</item>
+        <item>24</item>
+        <item>46</item>
+        <item>25</item>
+        <item>16</item>
+        <item>15</item>
+        <item>17</item>
+        <item>18</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>33</item>
+        <item>34</item>
+        <item>37</item>
+        <item>38</item>
+        <item>39</item>
+        <item>40</item>
+        <item>41</item>
+        <item>42</item>
+        <item>43</item>
+        <item>44</item>
+        <item>45</item>
+        <item>47</item>
+        <item>99</item>
+    </string-array>
+
+    <string-array name="company_name_array">
+        <item>CJ대한통운</item>
+        <item>한진택배</item>
+        <item>롯데택배</item>
+        <item>우체국택배</item>
+        <item>로젠택배</item>
+        <item>KG로지스택배</item>
+        <item>KG로지스택배(KG옐로우캡)</item>
+        <item>KGB택배</item>
+        <item>일양로지스</item>
+        <item>EMS</item>
+        <item>DHL</item>
+        <item>한덱스</item>
+        <item>FedEx</item>
+        <item>UPS</item>
+        <item>USPS</item>
+        <item>대신택배</item>
+        <item>경동택배</item>
+        <item>합동택배</item>
+        <item>CVSnet 편의점택배</item>
+        <item>CU 편의점택배</item>
+        <item>TNT Express</item>
+        <item>한의사랑택배</item>
+        <item>GTX로지스</item>
+        <item>천일택배</item>
+        <item>건영택배</item>
+        <item>GSMNtoN</item>
+        <item>에어보이익스프레스</item>
+        <item>KGL네트웍스</item>
+        <item>DHL Global Mail</item>
+        <item>i-Parcel</item>
+        <item>범한판토스</item>
+        <item>APEX(ECMS Express)</item>
+        <item>KG로지스택배</item>
+        <item>굿투럭</item>
+        <item>GSI Express</item>
+        <item>CJ대한통운 국제특송</item>
+        <item>애니트랙</item>
+        <item>SLX</item>
+        <item>호남택배</item>
+        <item>우리한방택배</item>
+        <item>롯데택배 해외특송</item>
+    </string-array>
+</resources>

@@ -5,4 +5,6 @@
     <string name="fragment_pay">결제</string>
     <string name="fragment_mastercode">마스터코드</string>
     <string name="fragment_setting">설정</string>
+
+
 </resources>

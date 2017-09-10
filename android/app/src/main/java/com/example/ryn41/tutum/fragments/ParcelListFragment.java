@@ -9,10 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.example.ryn41.tutum.R;
 import com.example.ryn41.tutum.activities.MainActivity;
+import com.example.ryn41.tutum.activities.NewInvoiceActivity;
 import com.example.ryn41.tutum.activities.TrackingInfoActivity;
 import com.example.ryn41.tutum.forlists.Parcel;
 import com.example.ryn41.tutum.forlists.ParcelListAdapter;
@@ -38,6 +40,7 @@ public class ParcelListFragment extends Fragment {
     private List<Parcel> parcelList;
 
     private String parcels;
+    private String userID;
     private String companyCode, invoiceNo;
 
     public static ParcelListFragment newInstance(){
@@ -89,6 +92,8 @@ public class ParcelListFragment extends Fragment {
         adapter = new ParcelListAdapter(getContext(), parcelList);
         parcelListView.setAdapter(adapter);
         parcelListView.setOnItemClickListener(itemClick);
+
+        ((ImageButton)wholeView.findViewById(R.id.fragment_list_add_imagebutton)).setOnClickListener(click);
     }
 
     private void generateViewIfNotExisting(){
@@ -122,8 +127,16 @@ public class ParcelListFragment extends Fragment {
         @Override
         public void onClick(View v){
             int id= v.getId();
+
+            if(id == R.id.fragment_list_add_imagebutton) {
+                userID = ((MainActivity)getActivity()).getUserID();
+                Intent intent = new Intent(getActivity(), NewInvoiceActivity.class);
+                intent.putExtra("userID", userID);
+                startActivity(intent);
+            }
         }
     };
+
     AdapterView.OnItemClickListener itemClick = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
