@@ -16,6 +16,7 @@ import com.example.ryn41.tutum.activities.ReloadActivity;
  */
 
 public class PayFragment extends Fragment {
+
     private View wholeView= null;
 
     public static PayFragment newInstance(){
@@ -40,13 +41,12 @@ public class PayFragment extends Fragment {
     }
 
     private void makeView() {
-        ((Button)wholeView.findViewById(R.id.fragment_pay_reload_button)).setOnClickListener(click);
+        ((Button) wholeView.findViewById(R.id.fragment_pay_reload_button)).setOnClickListener(click);
     }
 
     View.OnClickListener click= new View.OnClickListener(){
         @Override
-        public void onClick(View v){
-
+        public void onClick(View v) {
             int id= v.getId();
 
             if(id == R.id.fragment_pay_reload_button) {

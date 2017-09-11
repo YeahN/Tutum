@@ -15,6 +15,7 @@ import java.util.List;
  */
 
 public class TrackingDetailListAdapter extends BaseAdapter {
+
     private Context context;
     private List<TrackingDetail> trackingDetailList;
 

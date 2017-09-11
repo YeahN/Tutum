@@ -54,13 +54,13 @@ public class NewInvoiceActivity extends AppCompatActivity {
     }
 
     private void makeView() {
-        companySpinner = (Spinner)findViewById(R.id.activity_new_invoice_company_spinner);
+        companySpinner = (Spinner) findViewById(R.id.activity_new_invoice_company_spinner);
         companyAdapter = ArrayAdapter.createFromResource(getApplicationContext(), R.array.company_name_array, android.R.layout.simple_spinner_dropdown_item);
         companySpinner.setAdapter(companyAdapter);
         companySpinner.setOnItemSelectedListener(itemSelect);
 
-        ((RadioGroup)findViewById(R.id.activity_new_invoice_payment_radiogroup)).setOnCheckedChangeListener(check);
-        ((Button)findViewById(R.id.activity_new_invoice_register_button)).setOnClickListener(click);
+        ((RadioGroup) findViewById(R.id.activity_new_invoice_payment_radiogroup)).setOnCheckedChangeListener(check);
+        ((Button) findViewById(R.id.activity_new_invoice_register_button)).setOnClickListener(click);
     }
 
     View.OnClickListener click = new View.OnClickListener() {
@@ -69,7 +69,7 @@ public class NewInvoiceActivity extends AppCompatActivity {
             int id = v.getId();
 
             if (id == R.id.activity_new_invoice_register_button) {
-                invoiceNo = ((EditText)findViewById(R.id.activity_new_invoice_invoice_no_edittext)).getText().toString();
+                invoiceNo = ((EditText) findViewById(R.id.activity_new_invoice_invoice_no_edittext)).getText().toString();
                 if(!invoiceNo.isEmpty()) {
                     (new NewAsync()).execute();
                 }
@@ -82,7 +82,7 @@ public class NewInvoiceActivity extends AppCompatActivity {
     RadioGroup.OnCheckedChangeListener check = new RadioGroup.OnCheckedChangeListener() {
         @Override
         public void onCheckedChanged(RadioGroup group, int checkedId) {
-            RadioButton paymentButton = (RadioButton)findViewById(checkedId);
+            RadioButton paymentButton = (RadioButton) findViewById(checkedId);
             if(paymentButton.getId() == 0)
                 payment = 0;
             else payment = 1;
@@ -114,7 +114,7 @@ public class NewInvoiceActivity extends AppCompatActivity {
                 BufferedReader rd  = new BufferedReader(new InputStreamReader(conn.getInputStream()));
                 StringBuilder sb = new StringBuilder();
                 String line;
-                while((line = rd.readLine()) != null){
+                while((line = rd.readLine()) != null) {
                     sb.append(line);
                 }
                 line = sb.toString();
@@ -122,7 +122,8 @@ public class NewInvoiceActivity extends AppCompatActivity {
 
                 if(line.equals("success")) {
                     finish();
-                } else {
+                }
+                else {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {

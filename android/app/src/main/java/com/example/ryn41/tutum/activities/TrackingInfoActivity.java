@@ -41,7 +41,7 @@ public class TrackingInfoActivity extends Activity {
     }
 
     private void makeView() {
-        trackingDetailListView = (ListView)findViewById(R.id.activity_tracking_info_listview);
+        trackingDetailListView = (ListView) findViewById(R.id.activity_tracking_info_listview);
         trackingDetailList = new ArrayList<TrackingDetail>();
         adapter = new TrackingDetailListAdapter(getApplicationContext(), trackingDetailList);
         trackingDetailListView.setAdapter(adapter);
@@ -52,9 +52,9 @@ public class TrackingInfoActivity extends Activity {
 
         try {
             JSONObject jsonObject = new JSONObject(trackingInfo);
-            ((TextView)findViewById(R.id.sender_name_text)).setText(jsonObject.getString("senderName"));
-            ((TextView)findViewById(R.id.receiver_name_text)).setText(jsonObject.getString("receiverName"));
-            ((TextView)findViewById(R.id.item_name_text)).setText(jsonObject.getString("itemName"));
+            ((TextView) findViewById(R.id.sender_name_text)).setText(jsonObject.getString("senderName"));
+            ((TextView) findViewById(R.id.receiver_name_text)).setText(jsonObject.getString("receiverName"));
+            ((TextView) findViewById(R.id.item_name_text)).setText(jsonObject.getString("itemName"));
 
             JSONArray jsonArray = jsonObject.getJSONArray("trackingDetails");
             int count = jsonArray.length();

@@ -42,12 +42,11 @@ public class MainActivity extends FragmentActivity {
     }
 
     @Override
-    public void onResume(){
+    public void onResume() {
         super.onResume();
-
-//        makeView();
         (new ListAsync()).execute();
     }
+
     @Override
     public void onPause(){
         super.onPause();
@@ -55,17 +54,17 @@ public class MainActivity extends FragmentActivity {
 
     private void makeView() {
         mAdapter = new TutumPagerAdapter(getSupportFragmentManager(), getApplicationContext());
-        mPager = (ViewPager)findViewById(R.id.pager);
+        mPager = (ViewPager) findViewById(R.id.pager);
         mPager.setAdapter(mAdapter);
 
-        mTabs = (TabLayout)findViewById(R.id.tabs);
+        mTabs = (TabLayout) findViewById(R.id.tabs);
         mTabs.setupWithViewPager(mPager);
     }
 
     private class ListAsync extends AsyncTask<Void, Void, Void> {
 
         @Override
-        public void onPreExecute(){
+        public void onPreExecute() {
             super.onPreExecute();
 
             if(mDialog == null){
@@ -97,18 +96,18 @@ public class MainActivity extends FragmentActivity {
                 line = sb.toString();
                 parcels = line;
                 Log.e("parcels", parcels);
-            } catch (Exception ex) {
+            }
+            catch (Exception ex) {
                 ex.printStackTrace();
             }
             return null;
         }
 
         @Override
-        public void onPostExecute(Void result){
+        public void onPostExecute(Void result) {
             super.onPostExecute(result);
             if(mDialog != null && mDialog.isShowing()) mDialog.dismiss();
             Log.e("parcel", "list async");
-//            ((ParcelListFragment)mAdapter.getItem(Constants.FRAGMENT_LIST)).makeViewWithData(parcels);
             makeView();
         }
     }

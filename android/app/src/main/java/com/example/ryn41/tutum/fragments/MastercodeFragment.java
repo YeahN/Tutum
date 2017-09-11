@@ -13,6 +13,7 @@ import com.example.ryn41.tutum.R;
  */
 
 public class MastercodeFragment extends Fragment {
+
     private View wholeView= null;
 
     public static MastercodeFragment newInstance(){
@@ -20,13 +21,13 @@ public class MastercodeFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle bundle){
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
         wholeView= inflater.inflate(R.layout.fragment_mastercode, null);
         return wholeView;
     }
 
     @Override
-    public void onResume(){
+    public void onResume() {
         super.onResume();
         makeView();
     }
@@ -36,14 +37,12 @@ public class MastercodeFragment extends Fragment {
         super.onPause();
     }
 
-    private void makeView(){
+    private void makeView() {}
 
-    }
-
-    View.OnClickListener click= new View.OnClickListener(){
+    View.OnClickListener click = new View.OnClickListener() {
         @Override
-        public void onClick(View v){
-            int id= v.getId();
+        public void onClick(View v) {
+            int id = v.getId();
         }
     };
 }

@@ -18,19 +18,20 @@ import com.example.ryn41.tutum.etc.Constants;
  */
 
 public class TutumPagerAdapter extends FragmentPagerAdapter {
+
     private Context mContext= null;
 
     public TutumPagerAdapter(FragmentManager fm){
         super(fm);
     }
-    public TutumPagerAdapter(FragmentManager fm, Context context){
+    public TutumPagerAdapter(FragmentManager fm, Context context) {
         super(fm);
         mContext= context;
     }
 
     @Override
-    public CharSequence getPageTitle(int position){
-        if(mContext != null){
+    public CharSequence getPageTitle(int position) {
+        if(mContext != null) {
             switch(position){
                 case Constants.FRAGMENT_LIST:
                     return mContext.getResources().getString(R.string.fragment_list);
@@ -46,7 +47,7 @@ public class TutumPagerAdapter extends FragmentPagerAdapter {
     }
 
     @Override
-    public Fragment getItem(int position){
+    public Fragment getItem(int position) {
         switch(position){
             case Constants.FRAGMENT_LIST:
                 return ParcelListFragment.newInstance();
@@ -60,7 +61,8 @@ public class TutumPagerAdapter extends FragmentPagerAdapter {
                 return null;
         }
     }
+
     @Override
-    public int getCount(){ return 4; }
+    public int getCount() { return 4; }
 }
 

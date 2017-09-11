@@ -45,18 +45,18 @@ public class LoginActivity extends Activity {
     }
 
     private void makeView() {
-        ((Button)findViewById(R.id.activity_login_login_button)).setOnClickListener(click);
-        ((Button)findViewById(R.id.activity_login_signup_button)).setOnClickListener(click);
+        ((Button) findViewById(R.id.activity_login_login_button)).setOnClickListener(click);
+        ((Button) findViewById(R.id.activity_login_signup_button)).setOnClickListener(click);
     }
 
-    View.OnClickListener click = new View.OnClickListener(){
+    View.OnClickListener click = new View.OnClickListener() {
         @Override
-        public void onClick(View v){
+        public void onClick(View v) {
             int id = v.getId();
 
             if(id == R.id.activity_login_login_button) {
-                idstr = ((EditText)findViewById(R.id.activity_login_id_edittext)).getText().toString();
-                pwstr = ((EditText)findViewById(R.id.activity_login_password_edittext)).getText().toString();
+                idstr = ((EditText) findViewById(R.id.activity_login_id_edittext)).getText().toString();
+                pwstr = ((EditText) findViewById(R.id.activity_login_password_edittext)).getText().toString();
 
                 if(!idstr.isEmpty() && !pwstr.isEmpty()) {
                     TempData.setID(idstr);

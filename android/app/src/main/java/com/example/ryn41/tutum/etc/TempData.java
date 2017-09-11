@@ -5,6 +5,7 @@ package com.example.ryn41.tutum.etc;
  */
 
 public class TempData {
+
     private static String mUserID = "";
     private static String mUserPW = "";
 

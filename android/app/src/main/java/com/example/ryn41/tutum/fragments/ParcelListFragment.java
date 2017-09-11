@@ -34,6 +34,7 @@ import java.util.List;
  */
 
 public class ParcelListFragment extends Fragment {
+
     private View wholeView= null;
     private ListView parcelListView;
     private ParcelListAdapter adapter;
@@ -48,13 +49,13 @@ public class ParcelListFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle bundle){
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
         wholeView= inflater.inflate(R.layout.fragment_list, null);
         return wholeView;
     }
 
     @Override
-    public void onResume(){
+    public void onResume() {
         super.onResume();
         makeView();
     }
@@ -69,11 +70,11 @@ public class ParcelListFragment extends Fragment {
         parcelListView = (ListView) wholeView.findViewById(R.id.fragment_list_listview);
         parcelList = new ArrayList<Parcel>();
         try {
-            String str= ((MainActivity)getActivity()).getParcels();
+            String str= ((MainActivity) getActivity()).getParcels();
             String companyCode, companyName, invoiceNo;
             JSONObject jsonObject = new JSONObject(str);
             JSONArray jsonArray = jsonObject.getJSONArray("response");
-            if(jsonArray != null){
+            if(jsonArray != null) {
                 int count = 0;
                 while (count < jsonArray.length()) {
                     JSONObject object = jsonArray.getJSONObject(count);
@@ -123,13 +124,13 @@ public class ParcelListFragment extends Fragment {
         adapter.notifyDataSetChanged();
     }
 
-    View.OnClickListener click= new View.OnClickListener(){
+    View.OnClickListener click = new View.OnClickListener() {
         @Override
-        public void onClick(View v){
-            int id= v.getId();
+        public void onClick(View v) {
+            int id = v.getId();
 
             if(id == R.id.fragment_list_add_imagebutton) {
-                userID = ((MainActivity)getActivity()).getUserID();
+                userID = ((MainActivity) getActivity()).getUserID();
                 Intent intent = new Intent(getActivity(), NewInvoiceActivity.class);
                 intent.putExtra("userID", userID);
                 startActivity(intent);

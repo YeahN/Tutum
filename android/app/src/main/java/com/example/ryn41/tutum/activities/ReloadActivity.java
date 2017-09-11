@@ -39,12 +39,12 @@ public class ReloadActivity extends AppCompatActivity {
     }
 
     private void makeView() {
-        methodSpinner = (Spinner)findViewById(R.id.activity_reload_pay_method_spinner);
+        methodSpinner = (Spinner) findViewById(R.id.activity_reload_pay_method_spinner);
         methodAdapter = ArrayAdapter.createFromResource(getApplicationContext(), R.array.pay_method_name_array, android.R.layout.simple_spinner_dropdown_item);
         methodSpinner.setAdapter(methodAdapter);
         methodSpinner.setOnItemSelectedListener(itemSelect);
 
-        ((Button)findViewById(R.id.activity_reload_reload_button)).setOnClickListener(click);
+        ((Button) findViewById(R.id.activity_reload_reload_button)).setOnClickListener(click);
     }
 
     View.OnClickListener click = new View.OnClickListener() {
@@ -53,7 +53,7 @@ public class ReloadActivity extends AppCompatActivity {
             int id = v.getId();
 
             if (id == R.id.activity_reload_reload_button) {
-                amount = Integer.parseInt(((EditText)findViewById(R.id.activity_reload_amount_edittext)).getText().toString());
+                amount = Integer.parseInt(((EditText) findViewById(R.id.activity_reload_amount_edittext)).getText().toString());
                 if(amount > 0) {
                     String str = "payMethod: " + payMethod + ", amount: " + amount;
                     Toast.makeText(getApplicationContext(), str, Toast.LENGTH_LONG).show();
@@ -99,7 +99,8 @@ public class ReloadActivity extends AppCompatActivity {
 //
 //                if(line.equals("success")) {
 //                    finish();
-//                } else {
+//                }
+//                else {
 //                    runOnUiThread(new Runnable() {
 //                        @Override
 //                        public void run() {

@@ -15,6 +15,7 @@ import java.util.List;
  */
 
 public class ParcelListAdapter extends BaseAdapter {
+
     private Context context;
     private List<Parcel> parcelList;
 

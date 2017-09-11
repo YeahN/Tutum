@@ -57,7 +57,7 @@ public class SignupActivity extends Activity {
                 if (!idstr.isEmpty() && !pwstr.isEmpty()) {
                     (new SignupAsync()).execute();
                 } else {
-                    Toast.makeText(getApplicationContext(), "입력하세요", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "정보를 모두 입력하세요", Toast.LENGTH_SHORT).show();
                 }
             }
         }

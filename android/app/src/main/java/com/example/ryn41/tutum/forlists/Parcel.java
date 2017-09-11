@@ -19,7 +19,7 @@ public class Parcel {
         this.companyName = companyName;
         this.invoiceNo = invoiceNo;
 
-        Log.e("parcel", "company : " + companyName + ", invoice no : " + invoiceNo);
+        Log.e("parcel", "company: " + companyName + ", invoiceNo: " + invoiceNo);
     }
 
 //    public String getItemName() {
