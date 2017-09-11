@@ -93,7 +93,7 @@ public class ParcelListFragment extends Fragment {
         parcelListView.setAdapter(adapter);
         parcelListView.setOnItemClickListener(itemClick);
 
-        ((ImageButton)wholeView.findViewById(R.id.fragment_list_add_imagebutton)).setOnClickListener(click);
+        ((ImageButton) wholeView.findViewById(R.id.fragment_list_add_imagebutton)).setOnClickListener(click);
     }
 
     private void generateViewIfNotExisting(){

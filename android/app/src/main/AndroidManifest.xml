@@ -32,7 +32,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.TrackingInfoActivity" />
-        <activity android:name=".activities.NewInvoiceActivity"></activity>
+        <activity android:name=".activities.NewInvoiceActivity" />
+        <activity android:name=".activities.ReloadActivity"></activity>
     </application>
 
 </manifest>

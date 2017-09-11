@@ -87,4 +87,18 @@
         <item>우리한방택배</item>
         <item>롯데택배 해외특송</item>
     </string-array>
+
+    <string-array name="pay_method_name_array">
+        <item>신용카드</item>
+        <item>실시간계좌이체</item>
+        <item>가상계좌</item>
+        <item>휴대폰소액결제</item>
+    </string-array>
+
+    <string-array name="pay_method_value_array">
+        <item>card</item>
+        <item>trans</item>
+        <item>vbank</item>
+        <item>phone</item>
+    </string-array>
 </resources>
