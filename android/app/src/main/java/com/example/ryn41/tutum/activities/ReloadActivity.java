@@ -1,5 +1,6 @@
 package com.example.ryn41.tutum.activities;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -58,6 +59,10 @@ public class ReloadActivity extends AppCompatActivity {
                     String str = "payMethod: " + payMethod + ", amount: " + amount;
                     Toast.makeText(getApplicationContext(), str, Toast.LENGTH_LONG).show();
 //                    (new PayAsync()).execute();
+                    Intent intent = new Intent(getApplicationContext(), WebViewActivity.class);
+                    intent.putExtra("payMethod", payMethod);
+                    intent.putExtra("amount", amount);
+                    startActivity(intent);
                 }
                 else {
                     Toast.makeText(getApplicationContext(), "충전금액을 입력해주세요", Toast.LENGTH_SHORT).show();

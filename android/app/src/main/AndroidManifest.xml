@@ -33,7 +33,8 @@
         </activity>
         <activity android:name=".activities.TrackingInfoActivity" />
         <activity android:name=".activities.NewInvoiceActivity" />
-        <activity android:name=".activities.ReloadActivity"></activity>
+        <activity android:name=".activities.ReloadActivity" />
+        <activity android:name=".activities.WebViewActivity"></activity>
     </application>
 
 </manifest>
