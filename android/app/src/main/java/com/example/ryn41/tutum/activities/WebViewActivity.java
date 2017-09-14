@@ -9,6 +9,10 @@ import com.example.ryn41.tutum.R;
 
 public class WebViewActivity extends Activity {
 
+    private String payMethod = "";
+    private int amount = 0;
+    private WebView mWebView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,20 +26,17 @@ public class WebViewActivity extends Activity {
     }
 
     @Override
-    public void onPause(){
+    public void onPause() {
         super.onPause();
     }
 
     private void makeView() {
-        String payMethod;
-        int amount;
         Intent intent = getIntent();
         payMethod = intent.getStringExtra("payMethod");
         amount = intent.getIntExtra("amount", 0);
 
-        WebView web = (WebView) findViewById(R.id.webview);
-        web.getSettings().setJavaScriptEnabled(true);
-        web.loadUrl("http://13.59.135.92/iamport.html");
-        web.loadUrl("javascript:setData('" + payMethod + "')");
+        mWebView = (WebView) findViewById(R.id.webview);
+        mWebView.getSettings().setJavaScriptEnabled(true);
+        mWebView.loadUrl("http://13.59.135.92/iamport.php?method="+payMethod+"&amount="+amount);
     }
 }

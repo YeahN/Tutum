@@ -56,8 +56,6 @@ public class ReloadActivity extends AppCompatActivity {
             if (id == R.id.activity_reload_reload_button) {
                 amount = Integer.parseInt(((EditText) findViewById(R.id.activity_reload_amount_edittext)).getText().toString());
                 if(amount > 0) {
-                    String str = "payMethod: " + payMethod + ", amount: " + amount;
-                    Toast.makeText(getApplicationContext(), str, Toast.LENGTH_LONG).show();
 //                    (new PayAsync()).execute();
                     Intent intent = new Intent(getApplicationContext(), WebViewActivity.class);
                     intent.putExtra("payMethod", payMethod);
