@@ -81,12 +81,14 @@
                 android:layout_weight="2">
 
                 <RadioButton
+                    android:id="@+id/activity_new_invoice_prepaid_radiobutton"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:checked="true"
                     android:text="선불" />
                 <RadioButton
+                    android:id="@+id/activity_new_invoice_deferred_radiobutton"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
