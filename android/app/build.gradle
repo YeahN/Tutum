@@ -4,7 +4,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion "26.0.1"
     defaultConfig {
-        applicationId "com.onface.godjakoo.tutum"
+        applicationId "com.example.ryn41.tutum"
         minSdkVersion 21
         targetSdkVersion 25
         versionCode 1
@@ -28,4 +28,11 @@ dependencies {
     compile 'com.android.support:design:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
+
+    //추가한 라인(계속 업그레이드 되고 있다.)
+    compile 'com.google.firebase:firebase-messaging:9.6.1'
+//서버로 데이터를 보낼때 okhttp를 사용한다면 추가
+    compile 'com.squareup.okhttp3:okhttp:3.2.0'
 }
+
+apply plugin: 'com.google.gms.google-services'

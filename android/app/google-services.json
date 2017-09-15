@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "245004922972",
+    "firebase_url": "https://tutum-3ee4b.firebaseio.com",
+    "project_id": "tutum-3ee4b",
+    "storage_bucket": "tutum-3ee4b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:245004922972:android:42f28fa61fbf2e48",
+        "android_client_info": {
+          "package_name": "com.example.ryn41.tutum"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "245004922972-9lj5hnf9pp453lo8dmqqko38td298n3p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQvi7RoflJq5iOCw37fj1OdDn-fmMPMfw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
