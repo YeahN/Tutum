@@ -2,16 +2,22 @@ package com.example.ryn41.tutum.activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.webkit.CookieManager;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 import com.example.ryn41.tutum.R;
+import com.example.ryn41.tutum.iamportsdk.InicisWebViewClient;
 
 public class WebViewActivity extends Activity {
 
     private String payMethod = "";
     private int amount = 0;
     private WebView mWebView;
+    private static final String APP_SCHEME = "iamport://";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,12 +37,43 @@ public class WebViewActivity extends Activity {
     }
 
     private void makeView() {
-        Intent intent = getIntent();
-        payMethod = intent.getStringExtra("payMethod");
-        amount = intent.getIntExtra("amount", 0);
+        Intent i = getIntent();
+        payMethod = i.getStringExtra("payMethod");
+        amount = i.getIntExtra("amount", 0);
 
         mWebView = (WebView) findViewById(R.id.webview);
-        mWebView.getSettings().setJavaScriptEnabled(true);
-        mWebView.loadUrl("http://13.59.135.92/iamport.php?method="+payMethod+"&amount="+amount);
+        mWebView.setWebViewClient(new InicisWebViewClient(this));
+        WebSettings settings = mWebView.getSettings();
+        settings.setJavaScriptEnabled(true);
+
+        if(android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            settings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
+            CookieManager cookieManager = CookieManager.getInstance();
+            cookieManager.setAcceptCookie(true);
+            cookieManager.setAcceptThirdPartyCookies(mWebView, true);
+        }
+
+        Intent intent = getIntent();
+        Uri intentData = intent.getData();
+
+        if ( intentData == null ) {
+            mWebView.loadUrl("http://13.59.135.92/iamport.php?method=" + payMethod + "&amount=" + amount);
+        } else {
+            //isp 인증 후 복귀했을 때 결제 후속조치
+            String url = intentData.toString();
+            if ( url.startsWith(APP_SCHEME) ) {
+                String redirectURL = url.substring(APP_SCHEME.length()+3);
+                mWebView.loadUrl(redirectURL);
+            }
+        }
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        String url = intent.toString();
+        if ( url.startsWith(APP_SCHEME) ) {
+            String redirectURL = url.substring(APP_SCHEME.length()+3);
+            mWebView.loadUrl(redirectURL);
+        }
     }
 }

@@ -34,7 +34,15 @@
         <activity android:name=".activities.TrackingInfoActivity" />
         <activity android:name=".activities.NewInvoiceActivity" />
         <activity android:name=".activities.ReloadActivity" />
-        <activity android:name=".activities.WebViewActivity"></activity>
+        <activity android:name=".activities.WebViewActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="iamport" /> <!-- 예시로 iamporttest로 설정. My앱의 특징을 나타내는 고유의 scheme을 사용하세요 -->
+            </intent-filter>
+        </activity>
 
         <!-- [START firebase_service] -->
         <service
