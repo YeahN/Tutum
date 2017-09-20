@@ -102,27 +102,27 @@ public class ParcelListFragment extends Fragment {
             wholeView= LayoutInflater.from(getActivity()).inflate(R.layout.fragment_list, null);
     }
 
-    public void setParcelData(String jsonString){
-        try {
-            String companyCode, companyName, invoiceNo;
-            JSONObject jsonObject = new JSONObject(jsonString);
-            JSONArray jsonArray = jsonObject.getJSONArray("response");
-            int count = 0;
-            while (count < jsonArray.length()) {
-                JSONObject object = jsonArray.getJSONObject(count);
-                companyCode = object.getString("companyCode");
-                companyName = object.getString("companyName");
-                invoiceNo = object.getString("invoiceNo");
-                Parcel parcel = new Parcel(companyCode, companyName, invoiceNo);
-                parcelList.add(parcel);
-                count++;
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-
-        adapter.notifyDataSetChanged();
-    }
+//    public void setParcelData(String jsonString){
+//        try {
+//            String companyCode, companyName, invoiceNo;
+//            JSONObject jsonObject = new JSONObject(jsonString);
+//            JSONArray jsonArray = jsonObject.getJSONArray("response");
+//            int count = 0;
+//            while (count < jsonArray.length()) {
+//                JSONObject object = jsonArray.getJSONObject(count);
+//                companyCode = object.getString("companyCode");
+//                companyName = object.getString("companyName");
+//                invoiceNo = object.getString("invoiceNo");
+//                Parcel parcel = new Parcel(companyCode, companyName, invoiceNo);
+//                parcelList.add(parcel);
+//                count++;
+//            }
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//        }
+//
+//        adapter.notifyDataSetChanged();
+//    }
 
     View.OnClickListener click = new View.OnClickListener() {
         @Override

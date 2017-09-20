@@ -24,12 +24,16 @@ public class MainActivity extends FragmentActivity {
 
     private ProgressDialog mDialog= null;
 
-    private String parcels;
     private String userID;
+    private String parcels;
+    private String payments;
+    public String getUserID() { return userID; }
     public String getParcels() {
         return parcels;
     }
-    public String getUserID() { return userID; }
+    public String getPayments() {
+        return payments;
+    }
 
 
     @Override
@@ -44,7 +48,7 @@ public class MainActivity extends FragmentActivity {
     @Override
     public void onResume() {
         super.onResume();
-        (new ListAsync()).execute();
+        (new GetAsync()).execute();
     }
 
     @Override
@@ -61,7 +65,7 @@ public class MainActivity extends FragmentActivity {
         mTabs.setupWithViewPager(mPager);
     }
 
-    private class ListAsync extends AsyncTask<Void, Void, Void> {
+    private class GetAsync extends AsyncTask<Void, Void, Void> {
 
         @Override
         public void onPreExecute() {
@@ -86,7 +90,6 @@ public class MainActivity extends FragmentActivity {
                 conn.setRequestMethod("POST");
                 conn.setDoInput(true);
                 conn.connect();
-
                 BufferedReader rd  = new BufferedReader(new InputStreamReader(conn.getInputStream()));
                 StringBuilder sb = new StringBuilder();
                 String line;
@@ -96,6 +99,23 @@ public class MainActivity extends FragmentActivity {
                 line = sb.toString();
                 parcels = line;
                 Log.e("parcels", parcels);
+                conn.disconnect();
+
+                str = "http://13.59.135.92/payhistory.php?id=" + userID;
+                url = new URL(str);
+                conn = (HttpURLConnection) url.openConnection();
+                conn.setRequestMethod("POST");
+                conn.setDoInput(true);
+                conn.connect();
+                rd  = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                sb = new StringBuilder();
+                while((line = rd.readLine()) != null) {
+                    sb.append(line + "\n");
+                }
+                line = sb.toString();
+                payments = line;
+                Log.e("payments", payments);
+                conn.disconnect();
             }
             catch (Exception ex) {
                 ex.printStackTrace();

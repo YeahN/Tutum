@@ -54,6 +54,8 @@
     <ListView
         android:id="@+id/fragment_pay_listview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:divider="#c3c3c3"
+        android:dividerHeight="1dp" />
 
 </LinearLayout>
