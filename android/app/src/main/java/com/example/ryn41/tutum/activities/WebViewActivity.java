@@ -10,10 +10,12 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 import com.example.ryn41.tutum.R;
+import com.example.ryn41.tutum.etc.TempData;
 import com.example.ryn41.tutum.iamportsdk.InicisWebViewClient;
 
 public class WebViewActivity extends Activity {
 
+//    private String userID = "";
     private String payMethod = "";
     private int amount = 0;
     private WebView mWebView;
@@ -23,6 +25,11 @@ public class WebViewActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web_view);
+
+        Intent intent = getIntent();
+//        userID = intent.getStringExtra("userID");
+        payMethod = intent.getStringExtra("payMethod");
+        amount = intent.getIntExtra("amount", 0);
     }
 
     @Override
@@ -37,10 +44,6 @@ public class WebViewActivity extends Activity {
     }
 
     private void makeView() {
-        Intent i = getIntent();
-        payMethod = i.getStringExtra("payMethod");
-        amount = i.getIntExtra("amount", 0);
-
         mWebView = (WebView) findViewById(R.id.webview);
         mWebView.setWebViewClient(new InicisWebViewClient(this));
         WebSettings settings = mWebView.getSettings();
@@ -57,7 +60,7 @@ public class WebViewActivity extends Activity {
         Uri intentData = intent.getData();
 
         if ( intentData == null ) {
-            mWebView.loadUrl("http://13.59.135.92/iamport.php?method=" + payMethod + "&amount=" + amount);
+            mWebView.loadUrl("http://13.59.135.92/reload.php?userID=" + TempData.getID() + "&method=" + payMethod + "&amount=" + amount);
         } else {
             //isp 인증 후 복귀했을 때 결제 후속조치
             String url = intentData.toString();

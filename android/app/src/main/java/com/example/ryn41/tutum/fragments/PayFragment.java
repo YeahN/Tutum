@@ -32,6 +32,8 @@ public class PayFragment extends Fragment {
     private PaymentListAdapter adapter;
     private List<Payment> paymentList;
 
+//    private String userID = "";
+
     public static PayFragment newInstance(){
         return new PayFragment();
     }
@@ -96,6 +98,9 @@ public class PayFragment extends Fragment {
             int id= v.getId();
 
             if(id == R.id.fragment_pay_reload_button) {
+//                userID = ((MainActivity) getActivity()).getUserID();
+//                Intent intent = new Intent(getActivity(), ReloadActivity.class);
+//                intent.putExtra("userID", userID);
                 startActivity(new Intent(getActivity(), ReloadActivity.class));
             }
         }

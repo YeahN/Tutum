@@ -13,12 +13,14 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.ryn41.tutum.R;
+import com.example.ryn41.tutum.etc.TempData;
 
 public class ReloadActivity extends AppCompatActivity {
 
     private ArrayAdapter methodAdapter;
     private Spinner methodSpinner;
 
+//    private String userID = "";
     private String payMethod = "";
     private int amount = 0;
 
@@ -26,6 +28,9 @@ public class ReloadActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reload);
+
+//        Intent intent = getIntent();
+//        userID = intent.getStringExtra("userID");
     }
 
     @Override
@@ -56,8 +61,8 @@ public class ReloadActivity extends AppCompatActivity {
             if (id == R.id.activity_reload_reload_button) {
                 amount = Integer.parseInt(((EditText) findViewById(R.id.activity_reload_amount_edittext)).getText().toString());
                 if(amount > 0) {
-//                    (new PayAsync()).execute();
                     Intent intent = new Intent(getApplicationContext(), WebViewActivity.class);
+                    intent.putExtra("userID", TempData.getID());
                     intent.putExtra("payMethod", payMethod);
                     intent.putExtra("amount", amount);
                     startActivity(intent);
@@ -78,44 +83,4 @@ public class ReloadActivity extends AppCompatActivity {
         @Override
         public void onNothingSelected(AdapterView<?> parent) {}
     };
-
-//    private class PayAsync extends AsyncTask<Void, Void, Void> {
-//
-//        @Override
-//        protected Void doInBackground(Void... params) {
-//            try {
-//                String str = "http://";
-//                URL url = new URL(str);
-//                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-//                conn.setRequestMethod("POST");
-//                conn.setDoInput(true);
-//                conn.connect();
-//
-//                BufferedReader rd  = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-//                StringBuilder sb = new StringBuilder();
-//                String line;
-//                while((line = rd.readLine()) != null){
-//                    sb.append(line);
-//                }
-//                line = sb.toString();
-//                Log.e("request pay", line);
-//
-//                if(line.equals("success")) {
-//                    finish();
-//                }
-//                else {
-//                    runOnUiThread(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();
-//                        }
-//                    });
-//                }
-//            }
-//            catch (Exception ex) {
-//                ex.printStackTrace();
-//            }
-//            return null;
-//        }
-//    }
 }

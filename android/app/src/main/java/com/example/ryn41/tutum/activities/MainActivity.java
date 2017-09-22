@@ -1,7 +1,6 @@
 package com.example.ryn41.tutum.activities;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -10,6 +9,7 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 
 import com.example.ryn41.tutum.R;
+import com.example.ryn41.tutum.etc.TempData;
 import com.example.ryn41.tutum.fragments.TutumPagerAdapter;
 
 import java.io.BufferedReader;
@@ -24,10 +24,10 @@ public class MainActivity extends FragmentActivity {
 
     private ProgressDialog mDialog= null;
 
-    private String userID;
+//    private String userID;
     private String parcels;
     private String payments;
-    public String getUserID() { return userID; }
+//    public String getUserID() { return userID; }
     public String getParcels() {
         return parcels;
     }
@@ -35,14 +35,13 @@ public class MainActivity extends FragmentActivity {
         return payments;
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Intent intent = getIntent();
-        userID = intent.getStringExtra("userID");
+//        Intent intent = getIntent();
+//        userID = intent.getStringExtra("userID");
     }
 
     @Override
@@ -84,7 +83,7 @@ public class MainActivity extends FragmentActivity {
         @Override
         protected Void doInBackground(Void... params) {
             try {
-                String str = "http://13.59.135.92/list.php?id=" + userID;
+                String str = "http://13.59.135.92/list.php?id=" + TempData.getID();
                 URL url = new URL(str);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("POST");
@@ -101,7 +100,7 @@ public class MainActivity extends FragmentActivity {
                 Log.e("parcels", parcels);
                 conn.disconnect();
 
-                str = "http://13.59.135.92/payhistory.php?id=" + userID;
+                str = "http://13.59.135.92/payhistory.php?id=" + TempData.getID();
                 url = new URL(str);
                 conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("POST");

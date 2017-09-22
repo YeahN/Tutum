@@ -100,9 +100,9 @@ public class LoginActivity extends Activity {
                 Log.e("login", line);
 
                 if(line.equals("success")) {
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    intent.putExtra("userID", idstr);
-                    startActivity(intent);
+//                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+//                    intent.putExtra("userID", idstr);
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
                     finish();
                 } else {
                     runOnUiThread(new Runnable() {

@@ -1,6 +1,5 @@
 package com.example.ryn41.tutum.activities;
 
-import android.content.Intent;
 import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -17,6 +16,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.ryn41.tutum.R;
+import com.example.ryn41.tutum.etc.TempData;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -28,7 +28,7 @@ public class NewInvoiceActivity extends AppCompatActivity {
     private ArrayAdapter companyAdapter;
     private Spinner companySpinner;
 
-    private String userID = "";
+//    private String userID = "";
     private String companyCode = "";
     private String invoiceNo = "";
     private int payment = 0;
@@ -38,8 +38,8 @@ public class NewInvoiceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_invoice);
 
-        Intent intent = getIntent();
-        userID = intent.getStringExtra("userID");
+//        Intent intent = getIntent();
+//        userID = intent.getStringExtra("userID");
     }
 
     @Override
@@ -104,7 +104,7 @@ public class NewInvoiceActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... params) {
             try {
-                String str = "http://13.59.135.92/newinvoice.php?userID=" + userID + "&companyCode=" + companyCode + "&invoiceNo=" + invoiceNo + "&payment=" + payment;
+                String str = "http://13.59.135.92/newinvoice.php?userID=" + TempData.getID() + "&companyCode=" + companyCode + "&invoiceNo=" + invoiceNo + "&payment=" + payment;
                 URL url = new URL(str);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("POST");

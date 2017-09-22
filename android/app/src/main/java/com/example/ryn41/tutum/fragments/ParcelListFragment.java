@@ -41,7 +41,7 @@ public class ParcelListFragment extends Fragment {
     private List<Parcel> parcelList;
 
     private String parcels;
-    private String userID;
+//    private String userID;
     private String companyCode, invoiceNo;
 
     public static ParcelListFragment newInstance(){
@@ -130,10 +130,10 @@ public class ParcelListFragment extends Fragment {
             int id = v.getId();
 
             if(id == R.id.fragment_list_add_imagebutton) {
-                userID = ((MainActivity) getActivity()).getUserID();
-                Intent intent = new Intent(getActivity(), NewInvoiceActivity.class);
-                intent.putExtra("userID", userID);
-                startActivity(intent);
+//                userID = ((MainActivity) getActivity()).getUserID();
+//                Intent intent = new Intent(getActivity(), NewInvoiceActivity.class);
+//                intent.putExtra("userID", userID);
+                startActivity(new Intent(getActivity(), NewInvoiceActivity.class));
             }
         }
     };
