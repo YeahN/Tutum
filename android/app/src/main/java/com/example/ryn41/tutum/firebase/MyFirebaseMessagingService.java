@@ -94,7 +94,6 @@ public class MyFirebaseMessagingService extends com.google.firebase.messaging.Fi
                 .setContentTitle("Tutum")
                 .setContentText(message)
                 .setAutoCancel(true)
-                .setSmallIcon(R.drawable.common_google_signin_btn_icon_dark)
                 .setContentIntent(pendingIntent);
 
         NotificationManager notificationManager =

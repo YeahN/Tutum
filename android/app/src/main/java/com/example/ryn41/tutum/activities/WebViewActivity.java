@@ -60,7 +60,7 @@ public class WebViewActivity extends Activity {
         Uri intentData = intent.getData();
 
         if ( intentData == null ) {
-            mWebView.loadUrl("http://13.59.135.92/reload.php?userID=" + TempData.getID() + "&method=" + payMethod + "&amount=" + amount);
+            mWebView.loadUrl("http://13.59.135.92/payment.php?userID=" + TempData.getID() + "&method=" + payMethod + "&amount=" + amount);
         } else {
             //isp 인증 후 복귀했을 때 결제 후속조치
             String url = intentData.toString();
