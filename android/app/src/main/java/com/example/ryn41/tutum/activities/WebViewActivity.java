@@ -11,6 +11,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 import com.example.ryn41.tutum.R;
+import com.example.ryn41.tutum.etc.Constants;
 import com.example.ryn41.tutum.etc.TempData;
 import com.example.ryn41.tutum.iamportsdk.InicisWebViewClient;
 

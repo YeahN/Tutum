@@ -13,6 +13,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.ryn41.tutum.R;
+import com.example.ryn41.tutum.etc.Constants;
 import com.example.ryn41.tutum.etc.TempData;
 
 public class ReloadActivity extends AppCompatActivity {
@@ -41,6 +42,7 @@ public class ReloadActivity extends AppCompatActivity {
 
     @Override
     public void onPause(){
+        TempData.setFragmentIndex(Constants.FRAGMENT_PAY);
         super.onPause();
     }
 

@@ -59,6 +59,9 @@ public class MainActivity extends FragmentActivity {
 
         mTabs = (TabLayout) findViewById(R.id.tabs);
         mTabs.setupWithViewPager(mPager);
+
+        mAdapter.notifyDataSetChanged();
+        mPager.setCurrentItem(TempData.getFragmentIndex(), true);
     }
 
     private class GetAsync extends AsyncTask<Void, Void, Void> {

@@ -6,6 +6,8 @@ package com.example.ryn41.tutum.etc;
 
 public class TempData {
 
+    private static int mFragmentIndex= 0;
+
     private static String mUserID = "";
     private static String mUserPW = "";
     private static String mUserName = "";
@@ -14,7 +16,11 @@ public class TempData {
     public static void setPW(String v) { mUserPW = v; }
     public static void setName(String v) { mUserName = v; }
 
+    public static void setFragmentIndex(int v){ mFragmentIndex= v; }
+
     public static String getID() { return mUserID; }
     public static String getPW() { return mUserPW; }
     public static String getName() { return mUserName; }
+
+    public static int getFragmentIndex(){ return mFragmentIndex; }
 }
