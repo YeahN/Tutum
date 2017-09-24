@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.webkit.CookieManager;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -19,7 +20,7 @@ public class WebViewActivity extends Activity {
     private String payMethod = "";
     private int amount = 0;
     private WebView mWebView;
-    private static final String APP_SCHEME = "iamport://";
+    private static final String APP_SCHEME = "tutumandroid://";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +28,6 @@ public class WebViewActivity extends Activity {
         setContentView(R.layout.activity_web_view);
 
         Intent intent = getIntent();
-//        userID = intent.getStringExtra("userID");
         payMethod = intent.getStringExtra("payMethod");
         amount = intent.getIntExtra("amount", 0);
     }
