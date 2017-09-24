@@ -38,11 +38,11 @@ public class ReloadActivity extends AppCompatActivity {
     public void onResume() {
         super.onResume();
         makeView();
+        TempData.setFragmentIndex(Constants.FRAGMENT_PAY);
     }
 
     @Override
     public void onPause(){
-        TempData.setFragmentIndex(Constants.FRAGMENT_PAY);
         super.onPause();
     }
 
