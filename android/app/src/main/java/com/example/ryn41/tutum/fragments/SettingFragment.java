@@ -40,7 +40,7 @@ public class SettingFragment extends Fragment {
     }
 
     private void makeView() {
-        ((TextView) wholeView.findViewById(R.id.fragment_setting_name_text)).setText(TempData.getName());
+        ((TextView) wholeView.findViewById(R.id.fragment_setting_name_text)).setText(TempData.getName().concat("님"));
     }
 
     View.OnClickListener click = new View.OnClickListener() {

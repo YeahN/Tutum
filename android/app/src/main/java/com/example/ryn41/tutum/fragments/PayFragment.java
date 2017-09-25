@@ -102,7 +102,7 @@ public class PayFragment extends Fragment {
         adapter = new PaymentListAdapter(getContext(), paymentList);
         paymentListView.setAdapter(adapter);
 
-        ((TextView) wholeView.findViewById(R.id.fragment_pay_name_text)).setText(TempData.getName());
+        ((TextView) wholeView.findViewById(R.id.fragment_pay_name_text)).setText(TempData.getName().concat("님"));
         ((TextView) wholeView.findViewById(R.id.fragment_pay_balance_text)).setText((String.format("%,d", TempData.getPoint())).concat("원"));
         ((Button) wholeView.findViewById(R.id.fragment_pay_reload_button)).setOnClickListener(click);
     }
