@@ -9,10 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.ryn41.tutum.R;
 import com.example.ryn41.tutum.activities.MainActivity;
 import com.example.ryn41.tutum.activities.ReloadActivity;
+import com.example.ryn41.tutum.etc.TempData;
 import com.example.ryn41.tutum.forlists.Payment;
 import com.example.ryn41.tutum.forlists.PaymentListAdapter;
 
@@ -32,6 +34,8 @@ public class PayFragment extends Fragment {
     private ListView paymentListView;
     private PaymentListAdapter adapter;
     private List<Payment> paymentList;
+
+    private String payments;
 
     public static PayFragment newInstance(){
         return new PayFragment();
@@ -56,12 +60,13 @@ public class PayFragment extends Fragment {
 
     private void makeView() {
         generateViewIfNotExisting();
+
         paymentListView = (ListView) wholeView.findViewById(R.id.fragment_pay_listview);
         paymentList = new ArrayList<Payment>();
         try {
-            String str= ((MainActivity) getActivity()).getPayments();
+            payments = ((MainActivity) getActivity()).getPayments();
             String sign, amount, detail, time;
-            JSONObject jsonObject = new JSONObject(str);
+            JSONObject jsonObject = new JSONObject(payments);
             JSONArray jsonArray = jsonObject.getJSONArray("response");
             if(jsonArray != null) {
                 int count = jsonArray.length();
@@ -89,13 +94,16 @@ public class PayFragment extends Fragment {
                     paymentList.add(payment);
                 }
             }
-        } catch (Exception ex) {
+        }
+        catch (Exception ex) {
             ex.printStackTrace();
         }
 
         adapter = new PaymentListAdapter(getContext(), paymentList);
         paymentListView.setAdapter(adapter);
 
+        ((TextView) wholeView.findViewById(R.id.fragment_pay_name_text)).setText(TempData.getName());
+        ((TextView) wholeView.findViewById(R.id.fragment_pay_balance_text)).setText((String.format("%,d", TempData.getPoint())).concat("원"));
         ((Button) wholeView.findViewById(R.id.fragment_pay_reload_button)).setOnClickListener(click);
     }
 

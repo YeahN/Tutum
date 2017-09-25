@@ -5,8 +5,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.ryn41.tutum.R;
+import com.example.ryn41.tutum.etc.TempData;
 
 /**
  * Created by ryn41 on 2017-08-20.
@@ -37,7 +39,9 @@ public class SettingFragment extends Fragment {
         super.onPause();
     }
 
-    private void makeView() {}
+    private void makeView() {
+        ((TextView) wholeView.findViewById(R.id.fragment_setting_name_text)).setText(TempData.getName());
+    }
 
     View.OnClickListener click = new View.OnClickListener() {
         @Override

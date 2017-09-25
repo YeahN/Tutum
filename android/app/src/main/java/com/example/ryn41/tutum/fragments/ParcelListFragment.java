@@ -41,7 +41,6 @@ public class ParcelListFragment extends Fragment {
     private List<Parcel> parcelList;
 
     private String parcels;
-//    private String userID;
     private String companyCode, invoiceNo;
 
     public static ParcelListFragment newInstance(){
@@ -67,12 +66,13 @@ public class ParcelListFragment extends Fragment {
 
     private void makeView() {
         generateViewIfNotExisting();
+
         parcelListView = (ListView) wholeView.findViewById(R.id.fragment_list_listview);
         parcelList = new ArrayList<Parcel>();
         try {
-            String str= ((MainActivity) getActivity()).getParcels();
+            parcels = ((MainActivity) getActivity()).getParcels();
             String companyCode, companyName, invoiceNo;
-            JSONObject jsonObject = new JSONObject(str);
+            JSONObject jsonObject = new JSONObject(parcels);
             JSONArray jsonArray = jsonObject.getJSONArray("response");
             if(jsonArray != null) {
                 int count = 0;
@@ -102,37 +102,12 @@ public class ParcelListFragment extends Fragment {
             wholeView= LayoutInflater.from(getActivity()).inflate(R.layout.fragment_list, null);
     }
 
-//    public void setParcelData(String jsonString){
-//        try {
-//            String companyCode, companyName, invoiceNo;
-//            JSONObject jsonObject = new JSONObject(jsonString);
-//            JSONArray jsonArray = jsonObject.getJSONArray("response");
-//            int count = 0;
-//            while (count < jsonArray.length()) {
-//                JSONObject object = jsonArray.getJSONObject(count);
-//                companyCode = object.getString("companyCode");
-//                companyName = object.getString("companyName");
-//                invoiceNo = object.getString("invoiceNo");
-//                Parcel parcel = new Parcel(companyCode, companyName, invoiceNo);
-//                parcelList.add(parcel);
-//                count++;
-//            }
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//        }
-//
-//        adapter.notifyDataSetChanged();
-//    }
-
     View.OnClickListener click = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             int id = v.getId();
 
             if(id == R.id.fragment_list_add_imagebutton) {
-//                userID = ((MainActivity) getActivity()).getUserID();
-//                Intent intent = new Intent(getActivity(), NewInvoiceActivity.class);
-//                intent.putExtra("userID", userID);
                 startActivity(new Intent(getActivity(), NewInvoiceActivity.class));
             }
         }

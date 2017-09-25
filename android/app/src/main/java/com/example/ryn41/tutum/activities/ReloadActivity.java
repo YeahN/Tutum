@@ -23,6 +23,7 @@ public class ReloadActivity extends AppCompatActivity {
 
     private String payMethod = "";
     private int amount = 0;
+    private String tel = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,11 +59,13 @@ public class ReloadActivity extends AppCompatActivity {
 
             if (id == R.id.activity_reload_reload_button) {
                 amount = Integer.parseInt(((EditText) findViewById(R.id.activity_reload_amount_edittext)).getText().toString());
+                tel = ((EditText) findViewById(R.id.activity_reload_tel_edittext)).getText().toString();
                 if(amount > 0) {
                     Intent intent = new Intent(getApplicationContext(), WebViewActivity.class);
                     intent.putExtra("userID", TempData.getID());
                     intent.putExtra("payMethod", payMethod);
                     intent.putExtra("amount", amount);
+                    intent.putExtra("tel", tel);
                     startActivity(intent);
                 }
                 else {

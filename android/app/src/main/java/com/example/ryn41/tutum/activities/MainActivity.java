@@ -12,6 +12,8 @@ import com.example.ryn41.tutum.R;
 import com.example.ryn41.tutum.etc.TempData;
 import com.example.ryn41.tutum.fragments.TutumPagerAdapter;
 
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -70,7 +72,7 @@ public class MainActivity extends FragmentActivity {
 
             if(mDialog == null) {
                 mDialog= new ProgressDialog(MainActivity.this);
-                mDialog.setMessage("get data");
+                mDialog.setMessage("Get data");
                 mDialog.setIndeterminate(false);
                 mDialog.setCancelable(false);
                 mDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
@@ -113,6 +115,25 @@ public class MainActivity extends FragmentActivity {
                 payments = line;
                 Log.e("payments", payments);
                 conn.disconnect();
+
+                str = "http://13.59.135.92/userinfo.php?id=" + TempData.getID();
+                url = new URL(str);
+                conn = (HttpURLConnection) url.openConnection();
+                conn.setRequestMethod("POST");
+                conn.setDoInput(true);
+                conn.connect();
+                rd  = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                sb = new StringBuilder();
+                while((line = rd.readLine()) != null) {
+                    sb.append(line + "\n");
+                }
+                line = sb.toString();
+                Log.e("user info", line);
+                conn.disconnect();
+
+                JSONObject jsonObject = new JSONObject(line);
+                TempData.setName(jsonObject.getString("name"));
+                TempData.setPoint(jsonObject.getInt("point"));
             }
             catch (Exception ex) {
                 ex.printStackTrace();
