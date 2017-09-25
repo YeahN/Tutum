@@ -21,7 +21,6 @@ public class ReloadActivity extends AppCompatActivity {
     private ArrayAdapter methodAdapter;
     private Spinner methodSpinner;
 
-//    private String userID = "";
     private String payMethod = "";
     private int amount = 0;
 
@@ -29,9 +28,6 @@ public class ReloadActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reload);
-
-//        Intent intent = getIntent();
-//        userID = intent.getStringExtra("userID");
     }
 
     @Override

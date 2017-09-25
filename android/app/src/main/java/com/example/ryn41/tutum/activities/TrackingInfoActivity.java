@@ -7,6 +7,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.ryn41.tutum.R;
+import com.example.ryn41.tutum.etc.Constants;
+import com.example.ryn41.tutum.etc.TempData;
 import com.example.ryn41.tutum.forlists.TrackingDetail;
 import com.example.ryn41.tutum.forlists.TrackingDetailListAdapter;
 
@@ -33,6 +35,7 @@ public class TrackingInfoActivity extends Activity {
     public void onResume() {
         super.onResume();
         makeView();
+        TempData.setFragmentIndex(Constants.FRAGMENT_LIST);
     }
 
     @Override

@@ -4,7 +4,6 @@ package com.example.ryn41.tutum.etc;
  * Created by ryn41 on 2017-08-20.
  */
 
-
 public class Constants {
 
     public final static int ACTIVITY_LOGIN= 0;

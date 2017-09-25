@@ -1,6 +1,7 @@
 package com.example.ryn41.tutum.fragments;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -31,8 +32,6 @@ public class PayFragment extends Fragment {
     private ListView paymentListView;
     private PaymentListAdapter adapter;
     private List<Payment> paymentList;
-
-//    private String userID = "";
 
     public static PayFragment newInstance(){
         return new PayFragment();
@@ -65,16 +64,29 @@ public class PayFragment extends Fragment {
             JSONObject jsonObject = new JSONObject(str);
             JSONArray jsonArray = jsonObject.getJSONArray("response");
             if(jsonArray != null) {
-                int count = 0;
-                while (count < jsonArray.length()) {
+                int count = jsonArray.length();
+                while (count > 0) {
+                    count--;
                     JSONObject object = jsonArray.getJSONObject(count);
                     sign = object.getString("sign");
-                    amount = object.getString("amount");
+                    amount = String.format("%,d", object.getInt("amount"));
                     detail = object.getString("detail");
                     time = object.getString("time");
+
+                    if(sign.equals("+")) {
+                        Resources res = getResources();
+
+                        for(int i = 0; i < 4; i++) {
+                            if(detail.equals(res.getStringArray(R.array.pay_method_value_array)[i])) {
+                                detail = res.getStringArray(R.array.pay_method_name_array)[i].concat("충전");
+                                break;
+                            }
+                        }
+
+                        amount = sign.concat(amount);
+                    }
                     Payment payment = new Payment(amount, detail, time);
                     paymentList.add(payment);
-                    count++;
                 }
             }
         } catch (Exception ex) {
@@ -98,9 +110,6 @@ public class PayFragment extends Fragment {
             int id= v.getId();
 
             if(id == R.id.fragment_pay_reload_button) {
-//                userID = ((MainActivity) getActivity()).getUserID();
-//                Intent intent = new Intent(getActivity(), ReloadActivity.class);
-//                intent.putExtra("userID", userID);
                 startActivity(new Intent(getActivity(), ReloadActivity.class));
             }
         }

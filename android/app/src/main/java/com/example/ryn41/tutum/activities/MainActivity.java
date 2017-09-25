@@ -24,10 +24,8 @@ public class MainActivity extends FragmentActivity {
 
     private ProgressDialog mDialog= null;
 
-//    private String userID;
     private String parcels;
     private String payments;
-//    public String getUserID() { return userID; }
     public String getParcels() {
         return parcels;
     }
@@ -70,7 +68,7 @@ public class MainActivity extends FragmentActivity {
         public void onPreExecute() {
             super.onPreExecute();
 
-            if(mDialog == null){
+            if(mDialog == null) {
                 mDialog= new ProgressDialog(MainActivity.this);
                 mDialog.setMessage("get data");
                 mDialog.setIndeterminate(false);
@@ -83,7 +81,7 @@ public class MainActivity extends FragmentActivity {
         @Override
         protected Void doInBackground(Void... params) {
             try {
-                String str = "http://13.59.135.92/list.php?id=" + TempData.getID();
+                String str = "http://13.59.135.92/parcellist.php?id=" + TempData.getID();
                 URL url = new URL(str);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("POST");

@@ -28,7 +28,6 @@ public class NewInvoiceActivity extends AppCompatActivity {
     private ArrayAdapter companyAdapter;
     private Spinner companySpinner;
 
-//    private String userID = "";
     private String companyCode = "";
     private String invoiceNo = "";
     private int payment = 0;
@@ -37,9 +36,6 @@ public class NewInvoiceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_invoice);
-
-//        Intent intent = getIntent();
-//        userID = intent.getStringExtra("userID");
     }
 
     @Override

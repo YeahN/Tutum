@@ -93,18 +93,17 @@ public class LoginActivity extends Activity {
                 BufferedReader rd  = new BufferedReader(new InputStreamReader(conn.getInputStream()));
                 StringBuilder sb = new StringBuilder();
                 String line;
-                while((line = rd.readLine()) != null){
+                while((line = rd.readLine()) != null) {
                     sb.append(line);
                 }
                 line = sb.toString();
                 Log.e("login", line);
 
                 if(line.equals("success")) {
-//                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-//                    intent.putExtra("userID", idstr);
                     startActivity(new Intent(getApplicationContext(), MainActivity.class));
                     finish();
-                } else {
+                }
+                else {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
