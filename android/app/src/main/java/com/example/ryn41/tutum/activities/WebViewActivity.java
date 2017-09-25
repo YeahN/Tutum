@@ -19,7 +19,7 @@ public class WebViewActivity extends Activity {
     private int amount = 0;
     private String tel = "";
     private WebView mWebView;
-    private static final String APP_SCHEME = "tutumandroid://";
+    private static final String APP_SCHEME = "tutumandroid";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

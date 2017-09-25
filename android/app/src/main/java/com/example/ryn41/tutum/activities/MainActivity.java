@@ -1,6 +1,8 @@
 package com.example.ryn41.tutum.activities;
 
 import android.app.ProgressDialog;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -15,6 +17,7 @@ import com.example.ryn41.tutum.fragments.TutumPagerAdapter;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -28,12 +31,14 @@ public class MainActivity extends FragmentActivity {
 
     private String parcels;
     private String payments;
+    private Bitmap mastercode;
     public String getParcels() {
         return parcels;
     }
     public String getPayments() {
         return payments;
     }
+    public Bitmap getMastercode() { return  mastercode; }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,10 +139,21 @@ public class MainActivity extends FragmentActivity {
                 JSONObject jsonObject = new JSONObject(line);
                 TempData.setName(jsonObject.getString("name"));
                 TempData.setPoint(jsonObject.getInt("point"));
+
+                str = "http://13.59.135.92/mastercode.php?id=" + TempData.getID();
+                url = new URL(str);
+                conn = (HttpURLConnection) url.openConnection();
+                conn.setRequestMethod("POST");
+                conn.setDoInput(true);
+                conn.connect();
+                InputStream is = conn.getInputStream();
+                mastercode = BitmapFactory.decodeStream(is);
+                conn.disconnect();
             }
             catch (Exception ex) {
                 ex.printStackTrace();
             }
+
             return null;
         }
 

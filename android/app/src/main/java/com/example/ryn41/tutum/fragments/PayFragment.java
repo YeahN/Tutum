@@ -109,7 +109,7 @@ public class PayFragment extends Fragment {
 
     private void generateViewIfNotExisting(){
         if(wholeView == null)
-            wholeView= LayoutInflater.from(getActivity()).inflate(R.layout.fragment_list, null);
+            wholeView = LayoutInflater.from(getActivity()).inflate(R.layout.fragment_pay, null);
     }
 
     View.OnClickListener click= new View.OnClickListener(){

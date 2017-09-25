@@ -1,43 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/background_gray">
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:gravity="center">
 
     <ImageView
-        android:id="@+id/barcode"
-        android:layout_width="300dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="190dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:background="#000000"/>
+        android:id="@+id/fragment_mastercode_image"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_alignParentTop="true" />
 
-    <TextView
-        android:id="@+id/code_tutumnum"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="TUTUM 고유번호"
-        android:textSize="25dp"
-        android:textColor="#000000"
-        android:layout_below="@id/barcode"
-        android:layout_marginTop="30dp"
-        />
-    <View
-        android:id="@+id/underbar"
-        android:layout_height="4dp"
-        android:layout_width="190dp"
-        android:background="@color/tutum_pink"
-        android:layout_below="@id/code_tutumnum"
-        android:layout_centerHorizontal="true"/>
+        android:layout_below="@+id/fragment_mastercode_image"
+        android:layout_marginTop="20dp"
+        android:gravity="center_horizontal">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/underbar"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
-        android:text="TUTUM번호입니다."
-        android:textColor="@color/tutum_text_color"/>
+        <TextView
+            android:id="@+id/code_tutumnum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TUTUM ID"
+            android:textSize="30dp"
+            android:textColor="#000000" />
+        <View
+            android:id="@+id/underbar"
+            android:layout_height="4dp"
+            android:layout_width="250dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:background="@color/tutum_pink" />
+        <TextView
+            android:id="@+id/fragment_mastercode_id_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="tutum_id"
+            android:textSize="20dp" />
+
+    </LinearLayout>
+
 </RelativeLayout>
