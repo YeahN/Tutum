@@ -61,6 +61,7 @@ public class LoginActivity extends Activity {
                 if(!idstr.isEmpty() && !pwstr.isEmpty()) {
                     TempData.setID(idstr);
                     TempData.setPW(pwstr);
+                    TempData.setUserLogin(1);
 
                     request();
                 }

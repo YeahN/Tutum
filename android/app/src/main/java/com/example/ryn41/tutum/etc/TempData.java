@@ -12,11 +12,13 @@ public class TempData {
     private static String mUserPW = "";
     private static String mUserName = "";
     private static int mUserPoint = 0;
+    private static int mUserLogin = 0;
 
     public static void setID(String v) { mUserID = v; }
     public static void setPW(String v) { mUserPW = v; }
     public static void setName(String v) { mUserName = v; }
     public static void setPoint(int v) { mUserPoint = v; }
+    public static void setUserLogin(int v) { mUserLogin = v; }
 
     public static void setFragmentIndex(int v){ mFragmentIndex= v; }
 
@@ -24,6 +26,7 @@ public class TempData {
     public static String getPW() { return mUserPW; }
     public static String getName() { return mUserName; }
     public static int getPoint() { return mUserPoint; }
+    public static int getUserLogin() { return mUserLogin;}
 
     public static int getFragmentIndex(){ return mFragmentIndex; }
 }
