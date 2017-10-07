@@ -80,6 +80,7 @@ public class SettingFragment extends Fragment {
             } else {
                 pushValid = "n";
             }
+            (new PushAsync()).execute();
         }
     };
 
