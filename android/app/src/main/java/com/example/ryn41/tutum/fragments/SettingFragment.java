@@ -31,7 +31,7 @@ public class SettingFragment extends Fragment {
 
     private View wholeView= null;
 
-    private int pushValid;
+    private String pushValid = "n";
 
     public static SettingFragment newInstance(){
         return new SettingFragment();
@@ -76,9 +76,9 @@ public class SettingFragment extends Fragment {
         @Override
         public void onCheckedChanged(CompoundButton button, boolean isChecked) {
             if (isChecked) {
-                pushValid = 1;
+                pushValid = "y";
             } else {
-                pushValid = 0;
+                pushValid = "n";
             }
         }
     };
@@ -88,7 +88,7 @@ public class SettingFragment extends Fragment {
         @Override
         protected Void doInBackground(Void... params) {
             try {
-                Log.e("int", String.valueOf(pushValid));
+                Log.e("pushValid", pushValid);
                 String str = "http://13.59.135.92/update.php?userId=" + TempData.getID() + "&valid=" + pushValid;
                 URL url = new URL(str);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();

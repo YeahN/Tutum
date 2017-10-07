@@ -84,15 +84,25 @@ public class SignupActivity extends Activity {
                 line = sb.toString();
                 Log.e("sign up", line);
 
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast.makeText(getApplicationContext(), "회원가입이 완료되었습니다", Toast.LENGTH_SHORT).show();
-                    }
-                });
-                Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
-                startActivity(intent);
-                finish();
+                if(line.equals("success")) {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getApplicationContext(), "회원가입이 완료되었습니다", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+                else {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getApplicationContext(), "TUTUM ID를 다시 확인하세요", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
             }
             catch (Exception ex) {
                 ex.printStackTrace();
