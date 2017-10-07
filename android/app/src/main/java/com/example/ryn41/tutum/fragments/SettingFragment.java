@@ -1,6 +1,7 @@
 package com.example.ryn41.tutum.fragments;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -31,7 +32,11 @@ public class SettingFragment extends Fragment {
 
     private View wholeView= null;
 
-    private String pushValid = "n";
+    private SharedPreferences mPref;
+    private SharedPreferences.Editor mPrefEdit;
+    private String pushValid = "y";
+
+    Switch pass_switch;
 
     public static SettingFragment newInstance(){
         return new SettingFragment();
@@ -90,7 +95,7 @@ public class SettingFragment extends Fragment {
         protected Void doInBackground(Void... params) {
             try {
                 Log.e("pushValid", pushValid);
-                String str = "http://13.59.135.92/update.php?userId=" + TempData.getID() + "&valid=" + pushValid;
+                String str = "http://13.59.135.92/firebase/update.php?userId=" + TempData.getID() + "&valid=" + pushValid;
                 URL url = new URL(str);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("GET");

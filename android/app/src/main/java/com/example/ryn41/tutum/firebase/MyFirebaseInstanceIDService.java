@@ -74,7 +74,7 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
         @Override
         protected Void doInBackground(Void... params) {
             try {
-                String str = "http://13.59.135.92/regist.php?Token=" + refreshedToken + "&userId=" + TempData.getID();
+                String str = "http://13.59.135.92/firebase/regist.php?Token=" + refreshedToken + "&userId=" + TempData.getID();
                 URL url = new URL(str);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("POST");

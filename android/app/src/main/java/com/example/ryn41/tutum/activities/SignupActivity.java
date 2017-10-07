@@ -68,7 +68,7 @@ public class SignupActivity extends Activity {
         @Override
         protected Void doInBackground(Void... params) {
             try {
-                String str = "http://13.59.135.92/signup.php?id=" + idstr + "&pw=" + pwstr + "&name=" + namestr;
+                String str = "http://13.59.135.92/auth/signup.php?id=" + idstr + "&pw=" + pwstr + "&name=" + namestr;
                 URL url = new URL(str);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("POST");

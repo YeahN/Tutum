@@ -121,7 +121,7 @@ public class MainActivity extends FragmentActivity {
                 Log.e("payments", payments);
                 conn.disconnect();
 
-                str = "http://13.59.135.92/userinfo.php?id=" + TempData.getID();
+                str = "http://13.59.135.92/auth/userinfo.php?id=" + TempData.getID();
                 url = new URL(str);
                 conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("POST");
