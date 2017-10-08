@@ -1,5 +1,6 @@
 package com.example.ryn41.tutum.fragments;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -33,7 +34,7 @@ public class SettingFragment extends Fragment {
     private View wholeView= null;
 
     private SharedPreferences mPref;
-    private SharedPreferences.Editor mPrefEdit;
+    private SharedPreferences.Editor mEdit;
     private String pushValid = "y";
 
     Switch pass_switch;
@@ -52,10 +53,15 @@ public class SettingFragment extends Fragment {
     public void onResume() {
         super.onResume();
         makeView();
+
+        pushValid= getActivity().getSharedPreferences("tutum", Context.MODE_PRIVATE).getString("pushvalid", "y");
     }
 
     @Override
     public void onPause(){
+        mEdit= null;
+        mPref= null;
+
         super.onPause();
     }
 
@@ -63,6 +69,9 @@ public class SettingFragment extends Fragment {
         ((TextView) wholeView.findViewById(R.id.fragment_setting_name_text)).setText(TempData.getName().concat("님"));
         ((Button) wholeView.findViewById(R.id.fragment_setting_logout_button)).setOnClickListener(click);
         ((Switch) wholeView.findViewById(R.id.fragment_setting_push_switch)).setOnCheckedChangeListener(check);
+
+        mPref= getActivity().getSharedPreferences("tutum", Context.MODE_PRIVATE);
+        mEdit= mPref.edit();
     }
 
     View.OnClickListener click = new View.OnClickListener() {
@@ -80,11 +89,12 @@ public class SettingFragment extends Fragment {
     CompoundButton.OnCheckedChangeListener check = new CompoundButton.OnCheckedChangeListener() {
         @Override
         public void onCheckedChanged(CompoundButton button, boolean isChecked) {
-            if (isChecked) {
-                pushValid = "y";
-            } else {
-                pushValid = "n";
-            }
+            pushValid= isChecked ? "y" : "n";
+
+            if(mPref == null) mPref= getActivity().getSharedPreferences("tutum", Context.MODE_PRIVATE);
+            if(mEdit == null) mEdit= mPref.edit();
+            mEdit.putString("pushvalid", pushValid);
+            mEdit.commit();
             (new PushAsync()).execute();
         }
     };

@@ -1,7 +1,9 @@
 package com.example.ryn41.tutum.activities;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -47,6 +49,21 @@ public class LoginActivity extends Activity {
     private void makeView() {
         ((Button) findViewById(R.id.activity_login_login_button)).setOnClickListener(click);
         ((Button) findViewById(R.id.activity_login_signup_button)).setOnClickListener(click);
+
+        checkSaved();
+    }
+
+    private void checkSaved(){
+        SharedPreferences pref= getSharedPreferences("tutum", Context.MODE_PRIVATE);
+        idstr= pref.getString("userid", "");
+        if(!idstr.isEmpty() && idstr.length() > 0){
+            pwstr= pref.getString("password", "");
+
+            TempData.setID(idstr);
+            TempData.setPW(pwstr);
+            TempData.setUserLogin(1);
+            request();
+        }
     }
 
     View.OnClickListener click = new View.OnClickListener() {
@@ -101,6 +118,12 @@ public class LoginActivity extends Activity {
                 Log.e("login", line);
 
                 if(line.equals("success")) {
+                    //godjakoo
+                    SharedPreferences.Editor edit= getSharedPreferences("tutum", Context.MODE_PRIVATE).edit();
+                    edit.putString("userid", idstr);
+                    edit.putString("password", pwstr);
+                    edit.commit();
+
                     startActivity(new Intent(getApplicationContext(), MainActivity.class));
                     finish();
                 }
