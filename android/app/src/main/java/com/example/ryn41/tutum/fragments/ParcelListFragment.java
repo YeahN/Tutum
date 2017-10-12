@@ -128,7 +128,7 @@ public class ParcelListFragment extends Fragment {
         protected Void doInBackground(Void... params) {
             try {
                 Log.e("parcel", "company code : " + companyCode + ", invoice no : " + invoiceNo);
-                String str = "http://info.sweettracker.co.kr/api/v1/trackingInfo?t_key=qLBsAYIWlzUJ0ojCZR6DDA&t_code=" + companyCode + "&t_invoice=" + invoiceNo;
+                String str = "http://info.sweettracker.co.kr/api/v1/trackingInfo?t_key=jvTUZqREf2BbJeSdzO2apA&t_code=" + companyCode + "&t_invoice=" + invoiceNo;
                 URL url = new URL(str);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("GET");
