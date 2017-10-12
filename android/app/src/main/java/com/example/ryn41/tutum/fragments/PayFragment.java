@@ -87,9 +87,12 @@ public class PayFragment extends Fragment {
                                 break;
                             }
                         }
-
-                        amount = sign.concat(amount);
                     }
+                    else {
+                        detail = detail.concat("사용");
+                    }
+                    amount = sign.concat(amount);
+
                     Payment payment = new Payment(amount, detail, time);
                     paymentList.add(payment);
                 }
